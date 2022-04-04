@@ -1,0 +1,949 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page {
+            size: A4;
+            margin: 1.2cm;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 14px;
+            font-family: "Liberation Sans Narrow";
+            text-align: left;
+            margin-left: 2mm;
+            margin-top: 5mm;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 0.3mm solid black;
+            font-family: "Liberation Sans Narrow";
+            font-size: 12px;
+            page-break-inside: avoid;
+        }
+
+        td {
+            border: 0.3mm solid black;
+            text-align: center;
+            padding: 0.7mm;
+        }
+
+        td.td-signature {
+            border: none !important;
+            text-align: left;
+            padding: 2mm;
+        }
+
+        td.a-1 {
+            width: 51.7mm;
+        }
+
+        td.b-1 {
+            width: 6.7mm;
+        }
+
+        td.n1-1 {
+            width: 28.7mm;
+        }
+
+        td.n2-1 {
+            width: 27.7mm;
+        }
+
+        td.n3-1 {
+            width: 27.7mm;
+        }
+
+        td.n4-1 {
+            width: 27.7mm;
+        }
+
+
+        td.a-5 {
+            width: 35.7mm;
+        }
+
+        td.b-5 {
+            width: 6.7mm;
+        }
+
+        td.n1-5 {
+            width: 29.7mm;
+        }
+
+        td.n2-5 {
+            width: 17.7mm;
+        }
+
+        td.n3-5 {
+            width: 20.7mm;
+        }
+
+        td.n4-5 {
+            width: 19.7mm;
+        }
+
+        td.n5-5 {
+            width: 20.7mm;
+        }
+
+        td.n6-5 {
+            width: 18.7mm;
+        }
+
+
+        td.a-6 {
+            width: 23.7mm;
+        }
+
+        td.b-6 {
+            width: 7.7mm;
+        }
+
+        td.n1-6 {
+            width: 11.7mm;
+        }
+
+        td.n2-6 {
+            width: 11.7mm;
+        }
+
+        td.n3-6 {
+            width: 11.7mm;
+        }
+
+        td.n4-6 {
+            width: 11.7mm;
+        }
+
+        td.n5-6 {
+            width: 19.7mm;
+        }
+
+        td.n6-6 {
+            width: 19.7mm;
+        }
+
+        td.n7-6 {
+            width: 12.7mm;
+        }
+
+        td.n8-6 {
+            width: 18.7mm;
+        }
+
+        td.n9-6 {
+            width: 19.7mm;
+        }
+
+
+        td.a-1-7 {
+            width: 6.7mm;
+        }
+
+        td.a-2-7 {
+            width: 30.7mm;
+        }
+
+        td.a-7 {
+            width: 37.7mm;
+        }
+
+        td.b-7 {
+            width: 8.7mm;
+        }
+
+        td.n1-7 {
+            width: 19.7mm;
+        }
+
+        td.n2-7 {
+            width: 21.7mm;
+        }
+
+        td.n3-7 {
+            width: 21.7mm;
+        }
+
+        td.n4-7 {
+            width: 21.7mm;
+        }
+
+        td.n5-7 {
+            width: 20.7mm;
+        }
+
+        td.n6-7 {
+            width: 16.7mm;
+        }
+
+
+        td.a-9 {
+            width: 127.7mm;
+        }
+
+        td.b-9 {
+            width: 8.7mm;
+        }
+
+        td.n1-9 {
+            width: 14.7mm;
+        }
+
+
+        td.n1-signature {
+            width: 92.7mm;
+        }
+
+        td.n2-signature {
+            width: 28.7mm;
+        }
+
+        td.n3-signature {
+            width: 50mm;
+        }
+
+
+        .align-left {
+            text-align: left;
+        }
+
+        .align-right {
+            text-align: right;
+        }
+
+        .width-100 {
+            width: 100%;
+        }
+
+        .grey {
+            background-color: #aaaaaa;
+        }
+
+        .mt-25 {
+            margin-top: 15mm;
+        }
+
+        .mt-1 {
+            margin-top: 1mm;
+        }
+
+        .mt-2 {
+            margin-top: 2mm;
+        }
+
+        div.main {
+            width: 180mm;
+        }
+
+        div.header {
+            width: 100%;
+            font-family: "Liberation Sans Narrow";
+        }
+
+        div.flex {
+            display: flex;
+        }
+
+        div.header-right {
+            width: 100%;
+        }
+
+        div.header-right-1-1 {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        div.header-right-1-2 {
+            width: 23mm;
+            border: 0.3mm solid black;
+            font-size: 16px;
+            font-weight: 900;
+            padding: 0.5mm;
+        }
+
+        div.header-right-2 {
+            width: 100%;
+            font-size: 14px;
+            font-weight: 900;
+            margin-top: 3mm;
+        }
+
+        div.header-right-3 {
+            margin-top: 3mm;
+            width: 100%;
+        }
+
+        div.header-right-3-1 {
+            width: 54mm;
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        div.header-right-3-2 {
+            width: 100%;
+            font-size: 12px;
+        }
+
+        div.header-notes {
+            width: 30mm;
+            font-size: 8px;
+            padding: 0.5mm 5mm 0.5mm;
+        }
+
+        div.header-table-2-1 {
+            min-height: 20mm;
+            text-align: left;
+
+        }
+
+        div.header-table-2-2 {
+            min-height: 10mm;
+            font-weight: 900;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        table.header {
+            font-size: 13px;
+            width: 100%;
+        }
+
+        td.header-1 {
+            width: 38mm;
+        }
+
+        td.header-2 {
+            padding-top: 0;
+            padding-left: 3mm;
+            margin-top: 0;
+        }
+
+        tr.header-1 {
+            height: 10mm;
+        }
+
+        tr.header-2 {
+            height: 10mm;
+        }
+
+        tr.header-3 {
+            height: 10mm;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="header flex">
+        <div class="header-notes">
+            <strong>Ministerstvo zdravotnictví</strong>
+            <p class="mt-1">Schváleno ČSÚ pro Ministerstvo zdravotnictví</p>
+            <p>ČV 83/21 ze dne 30. září 2020 v rámci Programu statistických zjišťování na rok 2021</p>
+            <p>Vyplněný výkaz předložte pracovišti státní statistické služby resortu zdravotnictví podle závazných
+                pokynů ÚZIS ČR</p>
+            <p class="mt-1">Ochrana důvěrnosti údajů je zaručena zákonem č. 89/1995 Sb., o státní statistické službě, ve
+                znění pozdějších předpisů Údaje se zjišťují pro potřebu Ministerstva zdravotnictví, které odpovídá za
+                jejich ochranu</p>
+        </div>
+        <div class="header-right">
+            <div class="flex header-right-1">
+                <div class="header-right-1-1">Roční výkaz o činnosti poskytovatele ZS</div>
+                <div class="header-right-1-2">A (MZ) 1-01</div>
+            </div>
+            <div class="header-right-2">Poskytovatel (obor): <i>klinická farmacie</i></div>
+            <div class="flex header-right-3">
+                <div class="header-right-3-1">Za rok {{ header.year }}</div>
+                <div class="header-right-3-2">
+                    <table class="header">
+                        <tr class="header-1">
+                            <td class="header-1">
+                                <div class="align-left">IČO</div>
+                                <div class="align-left"><strong>{{ header.ico }}</strong></div>
+                            </td>
+                            <td class="header-2" rowspan="3">
+                                <div class="align-left">Zpravodajská jednotka (adresa):</div>
+                                <div class="align-left mt-1"><strong>{{ header.name }}</strong></div>
+                                <div class="align-left mt-1"><strong>odd. {{ header.department_name }}</strong></div>
+                                <div class="align-left mt-1"><strong>{{ header.address }}</strong></div>
+                                <div class="align-left mt-1"><strong>{{ header.zip }} {{ header.city }}</strong></div>
+                                <div class="align-right mt-1"><strong>A007</strong></div>
+                            </td>
+                        </tr>
+                        <tr class="header-2">
+                            <td>
+                                <div class="align-left">PČZ</div>
+                                <div class="align-left"><strong>{{ header.pcz }}</strong></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="align-left">Oddělení, pracoviště, druh ZZ</div>
+                                <div class="flex">
+                                    <div class="align-left"><strong>{{ header.department_workplace_code }}</strong>
+                                    </div>
+                                    <div class="align-right width-100"><strong>{{ header.department_icp }}</strong>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1>I. Pracovníci ve zdravotnictví</h1>
+    <table>
+        <tr>
+            <td class="a-1"></td>
+            <td class="b-1">Č.ř</td>
+            <td class="n1-1">Klinický farmaceut<br> se specializací</td>
+            <td class="n2-1">Klinický farmaceut<br>zařazený do<br>předatestační přípravy</td>
+            <td class="n3-1"></td>
+            <td class="n4-1"></td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td class="align-left">Fyzické osoby (počet k 31.12.)</td>
+            <td>11</td>
+            <td>{{ variables.clinical_pharmacist_persons }}</td>
+            <td>{{ variables.pre_clinical_pharmacist_persons }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">Počet úvazků, určených pro poskytování<br>klinickofarmaceutické péče</td>
+            <td>12</td>
+            <td>{{ variables.clinical_pharmacist_jobs }}</td>
+            <td>{{ variables.pre_clinical_pharmacist_jobs }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <h1>II. Zřizovatel</h1>
+    <table>
+        <tr>
+            <td class="a-1">Počet</td>
+            <td class="b-1">Č.ř</td>
+            <td class="n1-1">Ministerstvo</td>
+            <td class="n2-1">Kraj</td>
+            <td class="n3-1">Město/obec</td>
+            <td class="n4-1">Fyzická osoba/církev</td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td class="align-left">Oddělení klinické farmacie vyššího typu</td>
+            <td>21</td>
+            <td>{% if  variables.department_of_cp_high_level and variables.ministry %}1{% endif %}</td>
+            <td>{% if  variables.department_of_cp_high_level and variables.region %}1{% endif %}</td>
+            <td>{% if  variables.department_of_cp_high_level and variables.city %}1{% endif %}</td>
+            <td>{% if  variables.department_of_cp_high_level and variables.person %}1{% endif %}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Oddělení klinické farmacie základního typu</td>
+            <td>22</td>
+            <td>{% if  variables.department_of_cp_base_level and variables.ministry %}1{% endif %}</td>
+            <td>{% if  variables.department_of_cp_base_level and variables.region %}1{% endif %}</td>
+            <td>{% if  variables.department_of_cp_base_level and variables.city %}1{% endif %}</td>
+            <td>{% if  variables.department_of_cp_base_level and variables.person %}1{% endif %}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Pracoviště klinického farmaceuta</td>
+            <td>23</td>
+            <td>{% if  variables.workplace_of_cp and variables.ministry %}1{% endif %}</td>
+            <td>{% if  variables.workplace_of_cp and variables.region %}1{% endif %}</td>
+            <td>{% if  variables.workplace_of_cp and variables.city %}1{% endif %}</td>
+            <td>{% if  variables.workplace_of_cp and variables.person %}1{% endif %}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Pracoviště s konzultační službou klinického<br>farmaceuta</td>
+            <td>24</td>
+            <td>{% if  variables.consultation_workplace_of_cp and variables.ministry %}1{% endif %}</td>
+            <td>{% if  variables.consultation_workplace_of_cp and variables.region %}1{% endif %}</td>
+            <td>{% if  variables.consultation_workplace_of_cp and variables.city %}1{% endif %}</td>
+            <td>{% if  variables.consultation_workplace_of_cp and variables.person %}1{% endif %}</td>
+        </tr>
+    </table>
+    <h1>III. Zdravotnická zařízení lůžkové péče</h1>
+    <table>
+        <tr>
+            <td class="a-1" rowspan="2"></td>
+            <td class="b-1" rowspan="2">Č.ř</td>
+            <td colspan="4"><b>Počet lůžek</b>, kterým je poskytována systematická klinicko-farmaceutická péče</td>
+        </tr>
+        <tr>
+            <td>standardní lůžka</td>
+            <td>lůžka intenzivní péče</td>
+            <td>lůžka<br>chirurgických oborů</td>
+            <td>lůžka interních oborů</td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td class="align-left">Akutní péče</td>
+            <td>31</td>
+            <td class="n1-1">{{ variables.acute_care_beds|default:"" }}</td>
+            <td class="n2-1">{{ variables.intensive_care|default:"" }}</td>
+            <td class="n3-1">{{ variables.surgical_beds|default:"" }}</td>
+            <td class="n4-1">{{ variables.internal_medicine_beds|default:"" }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Následná péče</td>
+            <td>32</td>
+            <td>{{ variables.aftercare_beds|default:"" }}</td>
+            <td class="grey"></td>
+            <td class="grey"></td>
+            <td class="grey"></td>
+        </tr>
+        <tr>
+            <td class="align-left">Dlouhodobá péče</td>
+            <td>33</td>
+            <td>{{ variables.long_term_care_beds|default:"" }}</td>
+            <td class="grey"></td>
+            <td class="grey"></td>
+            <td class="grey"></td>
+        </tr>
+    </table>
+    <h1>IV. Zdravotnická zařízení ambulantní péče</h1>
+    <table>
+        <tr>
+            <td class="a-1">Počet pacientů</td>
+            <td class="b-1">Č.ř</td>
+            <td class="n1-1">Konziliární<br>klinicko-farmaceutická<br>péče</td>
+            <td class="n2-1"></td>
+            <td class="n3-1"></td>
+            <td class="n4-1"></td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td class="align-left">Specializovaná ambulantní složka<br>zdravotnického zařízení lůžkové péče</td>
+            <td>41</td>
+            <td>{{ variables.internal_ambulances|default:"" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">Samostatná ordinace (fyzická/právnická<br>osoba)</td>
+            <td>42</td>
+            <td>{{ variables.independent_physician|default:"" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <h1>V. Klinicko-farmaceutická péče</h1>
+    <table>
+        <tr>
+            <td rowspan="2"></td>
+            <td rowspan="2">Č.ř</td>
+            <td rowspan="2">Počet oborů celkem,<br>ve kterých je<br>poskytována<br>klinicko-farmaceutická<br>péče</td>
+            <td rowspan="2">Interní<br>obory</td>
+            <td rowspan="2">Chirurgické<br>obory</td>
+            <td colspan="2">ze sloupce 3</td>
+            <td>ze sloupce<br>a 3</td>
+        </tr>
+        <tr>
+            <td>Onkologie,<br>paliativní<br>medicína</td>
+            <td>Psychiatrie,<br>geriatrie</td>
+            <td>Anesteziologie<br>a intenzivní<br>medicína<br>(ARO, JIP)</td>
+        </tr>
+        <tr>
+            <td class="a-5">a</td>
+            <td class="b-5">b</td>
+            <td class="n1-5">1</td>
+            <td class="n2-5">2</td>
+            <td class="n3-5">3</td>
+            <td class="n4-5">4</td>
+            <td class="n5-5">5</td>
+            <td class="n6-5">6</td>
+        </tr>
+        <tr>
+            <td class="align-left">Oddělení klinické farmacie<br>vyššího typu</td>
+            <td>51</td>
+            {% if variables.department_of_cp_high_level %}
+                <td>{{ variables.clinic_sum }}</td>
+                <td>{{ variables.internal_clinics }}</td>
+                <td>{{ variables.surgical_clinics }}</td>
+                <td>{{ variables.oncology_clinics }}</td>
+                <td>{{ variables.psychiatry_clinics }}</td>
+                <td>{{ variables.aro_icu }}</td>
+            {% else %}
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td class="align-left">Oddělení klinické farmacie<br>základního typu</td>
+            <td>52</td>
+            {% if variables.department_of_cp_base_level %}
+                <td>{{ variables.clinic_sum }}</td>
+                <td>{{ variables.internal_clinics }}</td>
+                <td>{{ variables.surgical_clinics }}</td>
+                <td>{{ variables.oncology_clinics }}</td>
+                <td>{{ variables.psychiatry_clinics }}</td>
+                <td>{{ variables.aro_icu }}</td>
+            {% else %}
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td class="align-left">Pracoviště klinického<br>farmaceuta</td>
+            <td>53</td>
+            {% if variables.workplace_of_cp %}
+                <td>{{ variables.clinic_sum }}</td>
+                <td>{{ variables.internal_clinics }}</td>
+                <td>{{ variables.surgical_clinics }}</td>
+                <td>{{ variables.oncology_clinics }}</td>
+                <td>{{ variables.psychiatry_clinics }}</td>
+                <td>{{ variables.aro_icu }}</td>
+            {% else %}
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td class="align-left">Pracoviště s konzultační<br>službou klinického<br>farmaceuta</td>
+            <td>54</td>
+            {% if variables.consultation_workplace_of_cp %}
+                <td>{{ variables.clinic_sum }}</td>
+                <td>{{ variables.internal_clinics }}</td>
+                <td>{{ variables.surgical_clinics }}</td>
+                <td>{{ variables.oncology_clinics }}</td>
+                <td>{{ variables.psychiatry_clinics }}</td>
+                <td>{{ variables.aro_icu }}</td>
+            {% else %}
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            {% endif %}
+        </tr>
+    </table>
+    <h1>VI. Evidence činností klinického farmaceuta</h1>
+    <table>
+        <tr>
+            <td class="a-6"></td>
+            <td class="b-6">Č.ř</td>
+            <td class="n1-6">Výkon<br>05751</td>
+            <td class="n2-6">Výkon<br>05753</td>
+            <td class="n3-6">Výkon<br>05755</td>
+            <td class="n4-6">Výkon<br>05755<br>další</td>
+            <td class="n5-6">Edukace<br>pacienta se<br>záznamem do<br>zdravotnické<br>dokumentace</td>
+            <td class="n6-6">Počet<br>interpretací<br>plazmatických<br>hladin léčiv</td>
+            <td class="n7-6">Počet<br>chybných<br>zápisů<br>ordinace</td>
+            <td class="n8-6">Počet<br>vyžádaných<br>konzilií</td>
+            <td class="n9-6">Počet<br>vyžádaných<br>duplicit</td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td class="align-left">Počet celkem</td>
+            <td>61</td>
+            <td>{{ medical_procedures.05751 }}</td>
+            <td>{{ medical_procedures.05753 }}</td>
+            <td>{{ medical_procedures.05755 }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <h1>VII. Počet intervencí klinického farmaceuta</h1>
+    <table>
+        <tr>
+            <td class="a-7" colspan="2">Počet intervencí klinického<br>farmaceuta</td>
+            <td class="b-7">Č.ř</td>
+            <td class="n1-7">Nasazení<br>léčiva</td>
+            <td class="n2-7">Vysazení<br>léčiva</td>
+            <td class="n3-7">Úprava dávky<br>léčiva</td>
+            <td class="n4-7">Konzultace<br>k léčivu</td>
+            <td class="n5-7"></td>
+            <td class="n6-7"></td>
+        </tr>
+        <tr>
+            <td colspan="2">a</td>
+            <td>b</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td class="align-left" colspan="2">Celkem</td>
+            <td>81</td>
+            <td>{{ interventions.deployment }}</td>
+            <td>{{ interventions.discontinuation }}</td>
+            <td>{{ interventions.dose_change }}</td>
+            <td>{{ interventions.specific_consultation }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="6" class="a-1-7"></td>
+            <td class="align-left a-2-7">vhodnějších farmakolo-<br>gických vlastností</td>
+            <td>82</td>
+            <td>{{ interventions.deployment_ft_approach }}</td>
+            <td class="grey"></td>
+            <td class="grey"></td>
+            <td class="grey"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">projevu nebo rizika<br>nežádoucího účinku</td>
+            <td>83</td>
+            <td class="grey"></td>
+            <td>{{ interventions.discontinuation_adverse_effect }}</td>
+            <td>{{ interventions.dose_change_adverse_effect_risk }}</td>
+            <td class="grey"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">renální insuficience</td>
+            <td>84</td>
+            <td class="grey"></td>
+            <td>{{ interventions.discontinuation_renal_insufficiency }}</td>
+            <td>{{ interventions.dose_change_renal_insufficiency }}</td>
+            <td class="grey"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">lékařského zákroku</td>
+            <td>85</td>
+            <td class="grey"></td>
+            <td>{{ interventions.discontinuation_medical_intervention }}</td>
+            <td></td>
+            <td class="grey"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">zbytnosti léčiva<br>v průběhu hospitalizace</td>
+            <td>86</td>
+            <td class="grey"></td>
+            <td>{{ interventions.discontinuation_overdosage }}</td>
+            <td class="grey"></td>
+            <td class="grey"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">lékové interakce</td>
+            <td>87</td>
+            <td class="grey"></td>
+            <td>{{ interventions.discontinuation_drug_interaction }}</td>
+            <td>{{ interventions.dose_change_drug_interaction }}</td>
+            <td class="grey"></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <h1>VIII. Pacienti podle identifikovaného rizika</h1>
+    <table>
+        <tr>
+            <td class="a-7"></td>
+            <td class="b-7">Č.ř</td>
+            <td class="n1-7">Nízké riziko</td>
+            <td class="n2-7">Střední riziko</td>
+            <td class="n3-7">Vysoké riziko</td>
+            <td class="n4-7"></td>
+            <td class="n5-7"></td>
+            <td class="n6-7"></td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td class="align-left">Celkem</td>
+            <td>101</td>
+            <td>{{ risk_levels.1 }}</td>
+            <td>{{ risk_levels.2 }}</td>
+            <td>{{ risk_levels.3 }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <h1>IX. Identifikované rizikové faktory</h1>
+    <table>
+        <tr>
+            <td class="a-9"></td>
+            <td class="b-9">Č.ř</td>
+            <td class="n1-9">Počet</td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td class="align-left">Polypragmázie</td>
+            <td>111</td>
+            <td>{{ risk_factors.polypharmacy }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Léčivo s úzkým terapeutickým oknem</td>
+            <td>112</td>
+            <td>{{ risk_factors.narrow_therapeutic_window }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Léčivo s vysokým interakčním potenciálem, popsanými interakcemi</td>
+            <td>113</td>
+            <td>{{ risk_factors.high_interaction_potential }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Renální insuficience glomerulární filtrace je rovna nebo méně než 30 ml/min</td>
+            <td>114</td>
+            <td>{{ risk_factors.renal_insufficiency }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Laboratorní známky hepatální insuficience</td>
+            <td>115</td>
+            <td>{{ risk_factors.hepatic_insufficiency }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Další významné změny biochemických a/nebo hematologických parametrů</td>
+            <td>116</td>
+            <td>{{ risk_factors.significant_biochemical_changes }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Pacient v intenzivní péči</td>
+            <td>117</td>
+            <td>{{ risk_factors.intensive_care }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Diabetes mellitus (dle MKN: E10 – E14) – na terapii PAD a/nebo inzulínu</td>
+            <td>118</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">Epilepsie (dle MKN: G40, G41) na terapii antiepileptiky</td>
+            <td>119</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">Fibrilace síní (I48)</td>
+            <td>120</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">Nádorové onemocnění (dle MKN: C) – kurativní nebo paliativní onkologická
+                farmakoterapie
+            </td>
+            <td>121</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="align-left">Pacient s dlouhodobou (déle než 1 týden) léčbou systémovými kortikoidy nebo jinými
+                imunosupresivy
+            </td>
+            <td>122</td>
+            <td>{{ risk_factors.systemic_corticosteroids }}</td>
+        </tr>
+        <tr>
+            <td class="align-left">Pacient s parkinsonským syndromem (dle MKN: G20, G21).</td>
+            <td>123</td>
+            <td></td>
+        </tr>
+    </table>
+    <table class="mt-25">
+        <tr>
+            <td class="n1-signature td-signature">Razítko:</td>
+            <td class="n2-signature td-signature">Výkaz vyplnil:</td>
+            <td class="n3-signature td-signature">{{ variables.author }}</td>
+        </tr>
+        <tr>
+            <td class="n1-signature td-signature"></td>
+            <td class="n2-signature td-signature">Telefon:</td>
+            <td class="n3-signature td-signature">{{ variables.author_phone }}</td>
+        </tr>
+        <tr>
+            <td class="n1-signature td-signature"></td>
+            <td class="n2-signature td-signature">E-mail:</td>
+            <td class="n3-signature td-signature">{{ variables.author_email }}</td>
+        </tr>
+        <tr>
+            <td class="n1-signature td-signature">Podpis vedoucího zpravodajské jednotky:</td>
+            <td class="n2-signature td-signature">Datum:</td>
+            <td class="n3-signature td-signature">{{ signature.date }}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+name: Push workflow
+
+on:
+  push:
+    branches-ignore:
+      - master
+    tags-ignore:
+      - local
+      - test
+      - demo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache env files
+        uses: actions/cache@v2
+        with:
+          path: ./.envs/
+          key: envs-${{ github.sha }}
+      - name:  Create env files
+        run: |
+          mkdir -p .envs/.development
+          touch .envs/.development/.izadanky_app
+          echo "SECRET_KEY=${{ secrets.SECRET_KEY_DEV }}" >>  .envs/.development/.izadanky_app
+          echo "IPHARM_REFERENCES_TOKEN=${{ secrets.IPHARM_REFERENCES_TOKEN }}" >>  .envs/.development/.izadanky_app
+          echo "BASE_REFERENCES_URL=${{ secrets.BASE_REFERENCES_URL }}" >>  .envs/.development/.izadanky_app
+          echo "REFERENCES_TOKEN=${{ secrets.REFERENCES_TOKEN }}" >>  .envs/.development/.izadanky_app
+          touch .envs/.development/.izadanky_postgres
+          echo POSTGRES_HOST=izadanky-postgres >>  .envs/.development/.izadanky_postgres
+          echo POSTGRES_PORT=5432 >>  .envs/.development/.izadanky_postgres
+          echo POSTGRES_DB=izadanky >>  .envs/.development/.izadanky_postgres
+          echo POSTGRES_USER=izadanky >>  .envs/.development/.izadanky_postgres
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD_DEV }}" >>  .envs/.development/.izadanky_postgres
+          touch .envs/.development/.izadanky_redis
+          echo REDIS_HOST=izadanky-redis >>  .envs/.development/.izadanky_redis
+          echo REDIS_PORT=6379 >>  .envs/.development/.izadanky_redis
+          echo CELERY_BROKER_URL=redis://izadanky-redis:6379/1 >>  .envs/.development/.izadanky_redis
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Build image
+        uses: docker/bake-action@master
+        with:
+          files: docker-compose.izadanky-only.yml
+          push: false
+          set: |
+            *.cache-from=type=local,src=/tmp/.buildx-cache
+            *.cache-to=type=local,mode=max,dest=/tmp/.buildx-cache-new
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache env files
+        uses: actions/cache@v2
+        with:
+          path: ./.envs/
+          key: envs-${{ github.sha }}
+      - name: Build image
+        uses: docker/bake-action@master
+        with:
+          files: docker-compose.izadanky-only.yml
+          push: false
+          set: |
+            *.cache-from=type=local,src=/tmp/.buildx-cache
+      - name: Build the stack
+        run: docker-compose -f docker-compose.izadanky-only.yml up -d
+      - name: Test
+        run: docker-compose -f docker-compose.izadanky-only.yml run --rm -T izadanky-app ./scripts/tests.sh
+
+  isort:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache env files
+        uses: actions/cache@v2
+        with:
+          path: ./.envs/
+          key: envs-${{ github.sha }}
+      - name: Build image
+        uses: docker/bake-action@master
+        with:
+          files: docker-compose.izadanky-only.yml
+          push: false
+          set: |
+            *.cache-from=type=local,src=/tmp/.buildx-cache
+      - name: Isort
+        run: docker-compose -f docker-compose.izadanky-only.yml run --rm -T izadanky-app ./scripts/isort.sh
+
+  black:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache env files
+        uses: actions/cache@v2
+        with:
+          path: ./.envs/
+          key: envs-${{ github.sha }}
+      - name: Build image
+        uses: docker/bake-action@master
+        with:
+          files: docker-compose.izadanky-only.yml
+          push: false
+          set: |
+            *.cache-from=type=local,src=/tmp/.buildx-cache
+      - name: Black
+        run: docker-compose -f docker-compose.izadanky-only.yml run --rm -T izadanky-app ./scripts/black.sh
