@@ -1,0 +1,43 @@
+version: "3"
+services:
+  izadanky-app:
+    build:
+      context: .
+      dockerfile: dockerfiles/development/Dockerfile
+    container_name: izadanky_dev
+    image: izadanky_dev
+    volumes: &volumes-izadanky-app
+      - .:/app
+    depends_on:
+      - izadanky-postgres
+    env_file: &envs-izadanky-app
+      - .envs/.development/.izadanky_app
+      - .envs/.development/.izadanky_postgres
+      - .envs/.development/.izadanky_redis
+    ports:
+      - "8000:8000"
+    command: scripts/start.sh
+
+  izadanky-worker:
+    container_name: izadanky_worker_dev
+    image: izadanky_dev
+    volumes: *volumes-izadanky-app
+    depends_on:
+      - izadanky-postgres
+      - izadanky-redis
+    env_file: *envs-izadanky-app
+    command: scripts/start_worker.sh
+
+  izadanky-postgres:
+    container_name: izadanky_postgres
+    image: postgres:13.4-alpine
+    env_file:
+      - .envs/.development/.izadanky_postgres
+    volumes:
+      - ./_postgres_data_izadanky:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  izadanky-redis:
+    container_name: izadanky_redis
+    image: redis:6.2-alpine

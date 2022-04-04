@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+.idea
+.envs
+
+*.log
+
+ipharm_static
+iciselniky_static
+_postgres_data*
+dump.sql
+hosts
+/media/
+/docs/build/.doctrees/
