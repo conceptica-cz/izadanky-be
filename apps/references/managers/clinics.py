@@ -15,11 +15,3 @@ class ClinicManager(BaseTemporaryCreatableManager):
     def get_ambulances(self):
         """Return only ambulance clinics"""
         return self.get_queryset().filter(is_ambulance=True)
-
-    def get_my_hospitals(self, user):
-        """Return clinics belonging to user"""
-        return self.get_queryset().filter(hospital_users=user)
-
-    def get_my_ambulances(self, user):
-        """Return ambulances belonging to user"""
-        return self.get_queryset().filter(ambulance_users=user)

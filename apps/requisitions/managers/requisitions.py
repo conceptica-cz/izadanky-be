@@ -1,7 +1,5 @@
-import datetime
-
-from updates.managers import BaseTemporaryCreatableManager
+from updates.managers import BaseUpdatableManager
 
 
-class RequisitionManager(BaseTemporaryCreatableManager):
+class RequisitionManager(BaseUpdatableManager):
     pass

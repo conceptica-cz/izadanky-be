@@ -1,23 +1,16 @@
 from django.urls import path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
-from .views import clinics, reports, requisitions, tags, user
+from .views import patients, requisitions
+
+app_name = "requisitions"
 
 urlpatterns = [
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "schema/swagger-ui/",
-        SpectacularSwaggerView.as_view(url_name="schema"),
+        SpectacularSwaggerView.as_view(url_name="requisitions:schema"),
         name="swagger-ui",
-    ),
-    path("user/", user.UserView.as_view(), name="user"),
-    path("clinics/", clinics.ClinicListView.as_view(), name="clinic_list"),
-    path("clinics/<int:pk>/", clinics.ClinicDetailView.as_view(), name="clinic_detail"),
-    path("departments/", clinics.DepartmentListView.as_view(), name="department_list"),
-    path(
-        "departments/<int:pk>/",
-        clinics.DepartmentDetailView.as_view(),
-        name="department_detail",
     ),
     path(
         "requisitions/",
@@ -35,33 +28,23 @@ urlpatterns = [
         name="requisition_history",
     ),
     path(
-        "tags/",
-        tags.TagListView.as_view(),
-        name="tag_list",
+        "patients/",
+        patients.PatientListView.as_view(),
+        name="patient_list",
     ),
     path(
-        "tags/<int:pk>/",
-        tags.TagDetailView.as_view(),
-        name="tag_detail",
+        "patients/load-patient/",
+        patients.PatientLoadView.as_view(),
+        name="patient_load",
     ),
     path(
-        "reports/",
-        reports.GenericReportTypeListView.as_view(),
-        name="report_list",
+        "patients/<int:pk>/",
+        patients.PatientDetailView.as_view(),
+        name="patient_detail",
     ),
     path(
-        "reports/<int:pk>/variables/",
-        reports.ReportVariableListView.as_view(),
-        name="report_variable_list",
-    ),
-    path(
-        "reports/<int:pk>/generate/",
-        reports.ReportGenerateView.as_view(),
-        name="report_generate",
-    ),
-    path(
-        "report-variables/<int:pk>/",
-        reports.ReportVariableDetailView.as_view(),
-        name="report_variable_detail",
+        "patients/<int:pk>/history/",
+        patients.PatientHistoryView.as_view(),
+        name="patient_history",
     ),
 ]

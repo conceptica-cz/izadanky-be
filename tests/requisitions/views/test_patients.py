@@ -1,65 +1,58 @@
-import factory
+from unittest.mock import Mock, patch
+
+from django.test import override_settings
 from django.urls import reverse
-from requisitions.filters import RequisitionFilter
-from requisitions.models.requisitions import Requisition
-from requisitions.serializers.requisitions import RequisitionSerializer
-from rest_framework import status
+from requisitions.models import Patient
+from requisitions.serializers.patients import PatientSerializer
 from rest_framework.test import APITestCase
 
-from factories.references.clinics import ClinicFactory
-from factories.requisitions import RequisitionFactory
-from factories.users.models import UserFactory
+from factories.requisitions import PatientFactory
+from factories.users import UserFactory
 
 
-class GetAllRequisitionsTest(APITestCase):
-    def setUp(self) -> None:
-        self.user = UserFactory()
-        self.requisition_1 = RequisitionFactory()
-        self.requisition_2 = RequisitionFactory()
+class TestPatients(APITestCase):
+    def setUp(self):
+        """
+        Set up the test
+        """
+        user = UserFactory()
+        self.client.force_login(user)
+        self.patient_1 = PatientFactory()
+        self.patient_2 = PatientFactory()
+        self.patient_3 = PatientFactory()
 
-    def test_get_all_requisitions(self):
-        self.client.force_login(user=self.user)
-        response = self.client.get(reverse("requisition_list"))
-        requisitions = Requisition.objects.all()
-        serializer = RequisitionSerializer(requisitions, many=True)
+    def test_get_patients(self):
+        """
+        Test that we can get all patients
+        """
+        response = self.client.get("/api/v1/patients/")
 
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["results"], serializer.data)
+        self.assertEqual(response.status_code, 200)
 
+        expected_results = PatientSerializer(
+            instance=Patient.objects.all(), many=True
+        ).data
 
-class CreateRequisitionTest(APITestCase):
-    def setUp(self) -> None:
-        self.user = UserFactory()
+        self.assertEqual(response.data["results"], expected_results)
 
-    def test_new_requisition_ambulance(self):
-        requisition_data = factory.build(dict, FACTORY_CLASS=RequisitionFactory)
-        self.client.force_login(user=self.user)
-        response = self.client.post(reverse("requisition_list"), data=requisition_data)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-
-class GetSingleRequisitionTest(APITestCase):
-    def setUp(self) -> None:
-        self.user = UserFactory()
-        self.requisition = RequisitionFactory()
-
-    def test_get_single_requisition(self):
-        self.client.force_login(user=self.user)
+    def test_get_patient(self):
+        """
+        Test that we can get a patient
+        """
         response = self.client.get(
-            reverse("requisition_detail", kwargs={"pk": self.requisition.pk})
+            reverse("requisitions:patient_detail", kwargs={"pk": self.patient_1.id})
         )
-        serializer = RequisitionSerializer(self.requisition)
+        self.assertEqual(response.status_code, 200)
+        expected_data = PatientSerializer(instance=self.patient_1).data
+        self.assertEqual(response.data, expected_data)
 
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, serializer.data)
+    @patch("requisitions.views.patients.load_patient_task.delay")
+    def test_load_patient(self, mock_load_patient_task):
+        mock_load_patient_task.return_value = Mock(task_id="123")
+        response = self.client.post("/api/v1/patients/load-patient/?birth_number=42")
+        self.assertEqual(response.status_code, 202)
+        mock_load_patient_task.assert_called_with(birth_number="42")
 
-    def test_get_single_requisition_not_found(self):
-        self.client.force_login(user=self.user)
-        response = self.client.get(
-            reverse("requisition_detail", kwargs={"pk": self.requisition.pk + 1})
-        )
-
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-
-# TODO: Test for update and delete
+    def test_load_patient_return_400_if_birth_number_missing(self):
+        response = self.client.post("/api/v1/patients/load-patient/")
+        self.assertEqual(response.status_code, 400)
