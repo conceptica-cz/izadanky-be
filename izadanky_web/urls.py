@@ -12,7 +12,14 @@ admin.site.index_title = f"Welcome to iZadanky Admin"
 
 urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
+    path("api/v1/", include("common.urls")),
     path("api/v1/", include("requisitions.urls")),
+    path("api/v1/", include("references.urls")),
+    path("api/v1/", include("reports.urls")),
+    path("api/v1/", include("users.urls")),
     path("admin/", admin.site.urls),
     path("", lambda request: HttpResponse("Nothing to see here."), name="index"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.ENVIRONMENT == "development":
+    urlpatterns += [path("__debug__/", include("debug_toolbar.urls"))]

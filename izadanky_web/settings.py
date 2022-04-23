@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.postgres",
     "rest_framework",
+    "rest_framework.authtoken",
     "django_filters",
     "simple_history",
     "drf_spectacular",
@@ -105,10 +106,13 @@ DATABASES = {
     }
 }
 
+CONN_MAX_AGE = 180
+
 AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
+        "common.authentication.BearerTokenAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
@@ -193,14 +197,26 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 APP_VERSION = (BASE_DIR / Path("version.txt")).read_text()
 
+# PATIENT LOADER
+
+BASE_IPHARM_URL = os.environ.get("BASE_IPHARM_URL", "http://ipharm-app:8000/api/v1")
+IPHARM_TOKEN = os.environ.get("IPHARM_TOKEN", "")
+PATIENT_LOADER = os.environ.get(
+    "PATIENT_LOADER", "requisitions.loaders.ipharm_patient.load_ipahrm_patient"
+)
+IPHARM_TIMEOUT = int(os.environ.get("IPHARM_TIMEOUT", 30))
+
 # REFERENCES AND UPDATES
 
-BASE_ICISELNIKY_REFERENCES_URL = os.environ.get(
-    "BASE_ICISELNIKY_REFERENCES_URL", "http://iciselniky-app:8000/api/v1"
+BASE_ICISELNIKY_URL = os.environ.get(
+    "BASE_ICISELNIKY_URL", "http://iciselniky-app:8000/api/v1"
 )
-IPHARM_REFERENCES_TOKEN = os.environ["IPHARM_REFERENCES_TOKEN"]
-BASE_REFERENCES_URL = os.environ["BASE_REFERENCES_URL"]
-REFERENCES_TOKEN = os.environ["REFERENCES_TOKEN"]
+ICISELNIKY_TOKEN = os.environ.get("ICISELNIKY_TOKEN", "")
+
+
+BASE_UNIS_URL = os.environ.get("BASE_UNIS_URL", "http://unis-app:8000/api/v1")
+UNIS_TOKEN = os.environ.get("UNIS_TOKEN", "")
+
 DEFAULT_DATA_LOADER = "updates.common.loaders.references_loader"
 DEFAULT_MODEL_UPDATER = "updates.common.updaters.simple_model_updater"
 DEFAULT_INCREMENTAL_UPDATE_INTERVAL = os.environ.get(
@@ -211,13 +227,10 @@ DEFAULT_FULL_UPDATE_INTERVAL = os.environ.get(
 )
 DEFAULT_RETRY_DELAY = os.environ.get("DEFAULT_RETRY_DELAY", 3600)
 
-# if the time between the last patient care and the new care is less than this value
-# (in hours), all care's related models will be migrated to the new care
-MIGRATE_RELATED_TIME_GAP = os.environ.get("MIGRATE_RELATED_TIME_GAP", 36)
 
 UPDATE_SOURCES = {
     "Clinic": {
-        "data_loader_kwargs": {"url": BASE_ICISELNIKY_REFERENCES_URL + "/clinics/"},
+        "data_loader_kwargs": {"url": BASE_ICISELNIKY_URL + "/clinics/"},
         "model_updater_kwargs": {
             "model": "references.Clinic",
             "identifiers": ["reference_id"],
@@ -225,7 +238,7 @@ UPDATE_SOURCES = {
         "transformers": ["updates.common.transformers.id_to_reference_id"],
     },
     "Department": {
-        "data_loader_kwargs": {"url": BASE_ICISELNIKY_REFERENCES_URL + "/departments/"},
+        "data_loader_kwargs": {"url": BASE_ICISELNIKY_URL + "/departments/"},
         "model_updater_kwargs": {
             "model": "references.Department",
             "identifiers": ["external_id"],
@@ -260,6 +273,8 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/2"
 CELERY_TASK_IGNORE_RESULT = True
 CELERY_TASK_ACKS_LATE = True
+CELERY_TASK_TRACK_STARTED = True
+CELERY_ALWAYS_EAGER = False
 
 # LOGGING
 
@@ -333,3 +348,31 @@ if os.environ.get("SENTRY_DSN"):
         environment=os.environ.get("SENTRY_ENVIRONMENT", "production"),
         release=APP_VERSION,
     )
+
+# DJANGO DEBUG TOOLBAR
+if ENVIRONMENT == "development":
+    INSTALLED_APPS += ["debug_toolbar"]
+    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+    DEBUG_TOOLBAR_PANELS = [
+        "debug_toolbar.panels.versions.VersionsPanel",
+        "debug_toolbar.panels.timer.TimerPanel",
+        "debug_toolbar.panels.settings.SettingsPanel",
+        "debug_toolbar.panels.headers.HeadersPanel",
+        "debug_toolbar.panels.request.RequestPanel",
+        "debug_toolbar.panels.sql.SQLPanel",
+        "debug_toolbar.panels.staticfiles.StaticFilesPanel",
+        "debug_toolbar.panels.templates.TemplatesPanel",
+        "debug_toolbar.panels.cache.CachePanel",
+        "debug_toolbar.panels.signals.SignalsPanel",
+        "debug_toolbar.panels.logging.LoggingPanel",
+        "debug_toolbar.panels.redirects.RedirectsPanel",
+    ]
+    #    DEBUG_TOOLBAR_CONFIG = {"RESULTS_CACHE_SIZE": 0}
+
+    import socket  # only if you haven't already imported this
+
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + [
+        "127.0.0.1",
+        "10.0.2.2",
+    ]

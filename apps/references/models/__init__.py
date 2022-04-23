@@ -1,2 +1,2 @@
 from .clinics import *
-from .tags import *
+from .persons import *
