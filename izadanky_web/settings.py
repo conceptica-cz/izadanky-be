@@ -202,7 +202,7 @@ APP_VERSION = (BASE_DIR / Path("version.txt")).read_text()
 BASE_IPHARM_URL = os.environ.get("BASE_IPHARM_URL", "http://ipharm-app:8000/api/v1")
 IPHARM_TOKEN = os.environ.get("IPHARM_TOKEN", "")
 PATIENT_LOADER = os.environ.get(
-    "PATIENT_LOADER", "requisitions.loaders.ipharm_patient.load_ipahrm_patient"
+    "PATIENT_LOADER", "requisitions.loaders.ipharm_patient.load_ipharm_patient"
 )
 IPHARM_TIMEOUT = int(os.environ.get("IPHARM_TIMEOUT", 30))
 

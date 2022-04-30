@@ -31,7 +31,7 @@ class Patient:
     last_name: str
 
 
-def load_patient(birth_number=None) -> dict:
+def load_patient(birth_number=None, external_id=None) -> dict:
     """
     Get patient from third party API.
 
@@ -67,8 +67,13 @@ def load_patient(birth_number=None) -> dict:
     :param birth_number: the patient's birth number.
     :return: dictionary with patient data or error description.
     """
+    if birth_number is None and external_id is None:
+        raise ValueError("Either birth_number or external_id must be provided")
     try:
-        patient_model = PatientModel.objects.get(birth_number=birth_number)
+        if birth_number is not None:
+            patient_model = PatientModel.objects.get(birth_number=birth_number)
+        else:
+            patient_model = PatientModel.objects.get(external_id=external_id)
     except PatientModel.DoesNotExist:
         pass
     else:
@@ -77,7 +82,7 @@ def load_patient(birth_number=None) -> dict:
 
     loader = get_func_from_path(settings.PATIENT_LOADER)
     try:
-        patient = loader(birth_number)
+        patient = loader(birth_number=birth_number, external_id=external_id)
     except (PatientNotFound, APIError, APIisNotAvailable) as e:
         return {
             "success": False,

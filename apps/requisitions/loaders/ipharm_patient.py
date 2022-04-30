@@ -12,14 +12,19 @@ from requisitions.loaders.patient import (
 logger = logging.getLogger(__name__)
 
 
-def load_ipahrm_patient(birth_number=None):
+def load_ipharm_patient(birth_number=None, external_id=None):
     """
     Load patient via iPharm API
 
     :param birth_number: patient's birth number
     :return:
     """
-    url = f"{settings.BASE_IPHARM_URL }/patients/?birth_number={birth_number}"
+    if birth_number is None and external_id is None:
+        raise ValueError("Either birth_number or extrenal_id must be provided")
+    if birth_number is not None:
+        url = f"{settings.BASE_IPHARM_URL }/patients/?birth_number={birth_number}"
+    else:
+        url = f"{settings.BASE_IPHARM_URL }/patients/?external_id={external_id}"
     headers = {"Authorization": f"Bearer {settings.IPHARM_TOKEN}"}
     timeout = settings.IPHARM_TIMEOUT
     try:
