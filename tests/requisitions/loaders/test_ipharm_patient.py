@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import Mock, patch
 
-from requisitions.loaders.ipharm_patient import load_ipahrm_patient
+from requisitions.loaders.ipharm_patient import load_ipharm_patient
 from requisitions.loaders.patient import APIError, PatientNotFound
 
 
@@ -26,7 +26,7 @@ class GetPatientTest(TestCase):
             ],
         }
 
-        patient = load_ipahrm_patient("5603201072")
+        patient = load_ipharm_patient("5603201072")
 
         self.assertEqual(patient.external_id, "59")
         self.assertEqual(patient.name, "John Doe")
@@ -43,7 +43,7 @@ class GetPatientTest(TestCase):
             "results": [],
         }
         with self.assertRaises(PatientNotFound):
-            load_ipahrm_patient("5603201072")
+            load_ipharm_patient("5603201072")
 
     def test_get_patient_via_birth_number__status_isnt_200(self, mock_get):
         mock_get.return_value.status_code = 400
@@ -54,4 +54,4 @@ class GetPatientTest(TestCase):
             "results": [],
         }
         with self.assertRaises(APIError):
-            load_ipahrm_patient("5603201072")
+            load_ipharm_patient("5603201072")

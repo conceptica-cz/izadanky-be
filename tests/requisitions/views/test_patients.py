@@ -47,12 +47,25 @@ class TestPatients(APITestCase):
         self.assertEqual(response.data, expected_data)
 
     @patch("requisitions.views.patients.load_patient_task.delay")
-    def test_load_patient(self, mock_load_patient_task):
+    def test_load_patient_birth_number(self, mock_load_patient_task):
         mock_load_patient_task.return_value = Mock(task_id="123")
         response = self.client.post("/api/v1/patients/load-patient/?birth_number=42")
         self.assertEqual(response.status_code, 202)
-        mock_load_patient_task.assert_called_with(birth_number="42")
+        mock_load_patient_task.assert_called_with(birth_number="42", external_id=None)
 
-    def test_load_patient_return_400_if_birth_number_missing(self):
+    @patch("requisitions.views.patients.load_patient_task.delay")
+    def test_load_patient_external_id(self, mock_load_patient_task):
+        mock_load_patient_task.return_value = Mock(task_id="123")
+        response = self.client.post("/api/v1/patients/load-patient/?external_id=42")
+        self.assertEqual(response.status_code, 202)
+        mock_load_patient_task.assert_called_with(birth_number=None, external_id="42")
+
+    def test_load_patient_returns_400_if_birth_number_and_external_id_missing(self):
         response = self.client.post("/api/v1/patients/load-patient/")
+        self.assertEqual(response.status_code, 400)
+
+    def test_load_patient_returns_400_if_both_birth_number_and_external_are_set(self):
+        response = self.client.post(
+            "/api/v1/patients/load-patient/?birth_number=41&external_id=42"
+        )
         self.assertEqual(response.status_code, 400)

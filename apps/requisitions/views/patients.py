@@ -46,6 +46,12 @@ class PatientHistoryView(HistoryView):
                 location=OpenApiParameter.QUERY,
                 description="The birth number of the patient to be found",
             ),
+            OpenApiParameter(
+                name="external_id",
+                type=OpenApiTypes.STR,
+                location=OpenApiParameter.QUERY,
+                description="The external ID (UNIS ID) of the patient to be found",
+            ),
         ],
         responses={
             status.HTTP_202_ACCEPTED: inline_serializer(
@@ -59,7 +65,8 @@ class PatientLoadView(APIView):
     """
     Start a long-running background task of getting the patient via 3rd-party API.
 
-    One and only one of the following parameters must be provided: `birth_number`.
+    One and only one of the following parameters must be provided:
+    `birth_number`, `external_id`.
 
     To check the status of the task, use the `/tasks/<task_id>/` endpoint.
 
@@ -100,13 +107,20 @@ class PatientLoadView(APIView):
 
     def post(self, request, *args, **kwargs):
         birth_number = request.query_params.get("birth_number")
-        if birth_number is None:
+        external_id = request.query_params.get("external_id")
+        if (birth_number is None and external_id is None) or (
+            birth_number is not None and external_id is not None
+        ):
             return Response(
-                data={"error": "birth_number must be set"},
+                data={
+                    "error": "One and only one of the following parameters must be provided: birth_number, external_id"
+                },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        result = load_patient_task.delay(birth_number=birth_number)
+        result = load_patient_task.delay(
+            birth_number=birth_number, external_id=external_id
+        )
 
         return Response(
             data={"task_id": result.task_id}, status=status.HTTP_202_ACCEPTED

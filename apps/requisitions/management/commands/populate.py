@@ -28,11 +28,11 @@ class Command(BaseCommand):
         for i in range(20):
             persons.append(PersonFactory())
 
-        for i in range(50):
-            user = random.choice(users)
-            applicant = random.choice(persons[:4])
-            RequisitionFactory(
-                created_by=user,
-                applicant=applicant,
-            )
+        # for i in range(50):
+        #     user = random.choice(users)
+        #     applicant = random.choice(persons[:4])
+        #     RequisitionFactory(
+        #         created_by=user,
+        #         applicant=applicant,
+        #     )
         print("Database was populated.")
