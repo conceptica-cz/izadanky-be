@@ -61,6 +61,7 @@ release = ""
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -69,8 +70,8 @@ templates_path = ["_templates"]
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-# source_suffix = ['.rst', '.md']
-source_suffix = ".rst"
+source_suffix = ['.rst', '.md']
+# source_suffix = ".rst"
 
 # The master toctree document.
 master_doc = "index"
@@ -147,7 +148,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "iPharm.tex", "iPharm Documentation", "Conceptica s.r.o.", "manual"),
+    (master_doc, "iZadanky.tex", "iZadanky Documentation", "Conceptica s.r.o.", "manual"),
 ]
 
 
@@ -166,10 +167,10 @@ man_pages = [(master_doc, "izadanky", "iZadanky Documentation", [author], 1)]
 texinfo_documents = [
     (
         master_doc,
-        "iPharm",
-        "iPharm Documentation",
+        "iZadanky",
+        "iZadanky Documentation",
         author,
-        "iPharm",
+        "iZadanky",
         "One line description of project.",
         "Miscellaneous",
     ),
