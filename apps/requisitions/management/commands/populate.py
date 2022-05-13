@@ -1,10 +1,7 @@
-import random
-
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from factories.references import PersonFactory
-from factories.requisitions import RequisitionFactory
 from factories.users import UserFactory
 
 
@@ -28,11 +25,4 @@ class Command(BaseCommand):
         for i in range(20):
             persons.append(PersonFactory())
 
-        # for i in range(50):
-        #     user = random.choice(users)
-        #     applicant = random.choice(persons[:4])
-        #     RequisitionFactory(
-        #         created_by=user,
-        #         applicant=applicant,
-        #     )
         print("Database was populated.")

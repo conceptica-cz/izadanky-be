@@ -252,6 +252,14 @@ UPDATE_SOURCES = {
         },
         "transformers": ["updates.common.transformers.delete_id"],
     },
+    "Person": {
+        "data_loader_kwargs": {"url": BASE_ICISELNIKY_URL + "/persons/"},
+        "model_updater_kwargs": {
+            "model": "references.Person",
+            "identifiers": ["person_number"],
+        },
+        "transformers": ["updates.common.transformers.delete_id"],
+    },
 }
 
 # REPORTS
