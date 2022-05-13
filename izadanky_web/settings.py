@@ -284,6 +284,11 @@ CELERY_TASK_ACKS_LATE = True
 CELERY_TASK_TRACK_STARTED = True
 CELERY_ALWAYS_EAGER = False
 
+CELERY_TASK_DEFAULT_QUEUE = "low_priority"
+CELERY_TASK_ROUTES = {
+    "requisitions.tasks.load_patient_task": {"queue": "high_priority"}
+}
+
 # LOGGING
 
 LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")

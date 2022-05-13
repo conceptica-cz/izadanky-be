@@ -22,8 +22,8 @@ services:
       - "8000:8000"
     command: scripts/start.sh
 
-  izadanky-worker:
-    container_name: izadanky_worker_dev
+  izadanky-worker-high-priority:
+    container_name: izadanky_worker_high_priority
     image: izadanky_dev
     volumes: *volumes-izadanky-app
     logging: *logging
@@ -32,7 +32,19 @@ services:
       - izadanky-redis
       - izadanky-app
     env_file: *envs-izadanky-app
-    command: scripts/start_worker.sh
+    command: scripts/start_worker.sh -Q high_priority -n high_priority
+
+  izadanky-worker-low-priority:
+    container_name: izadanky_worker_low_priority
+    image: izadanky_dev
+    volumes: *volumes-izadanky-app
+    logging: *logging
+    depends_on:
+      - izadanky-postgres
+      - izadanky-redis
+      - izadanky-app
+    env_file: *envs-izadanky-app
+    command: scripts/start_worker.sh -Q low_priority -n low_priority
 
   izadanky-beat:
     container_name: izadanky_beat_dev
