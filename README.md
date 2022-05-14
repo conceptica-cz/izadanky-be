@@ -37,7 +37,7 @@ $ docker-compose up -d iciselniky-app
 $ docker-compose exec iciselniky-app python manage.py createsuperuser
 ```
 
-Now you can login to the iCiselniky app's admin on localhost:8001/admin/
+Now you can login to the iCiselniky app's admin on localhost:8002/admin/
 
 ### Populate iCiselniky database with fake data (optional, development only)
 
@@ -49,7 +49,7 @@ $ docker-compose exec iciselniky-app python manage.py populate
 
 To use [iCiselniky](https://github.com/conceptica-cz/iciselniky-be) API you have to get a token.
 
-Create `ipharm` (you can choose any name) user to
+Add `ipharm` (you can choose any name) user to
 iCiselniky:  [create user](http://localhost:8002/admin/users/user/add/).
 
 Create token for the added user:  [create token](http://localhost:8002/admin/authtoken/tokenproxy/add/).
@@ -60,7 +60,7 @@ You have to add the token to the `.envs/.development/.izadanky_app` file (`ICISE
 
 The app depends on the [iPharm app](https://github.com/conceptica-cz/ipharm-be).
 
-Create a environment variable files for iP, they are set automaticallyharm app:
+Create a environment variable files for iPharm app:
 
 - `./.envs/.development/.ipharm_app`
 - `./.envs/.development/.ipharm_postgres`
@@ -92,7 +92,7 @@ $ docker-compose exec ipharm-app python manage.py populate
 
 To use [iPharm](https://github.com/conceptica-cz/ipharm-be) API you have to get a token.
 
-Create `ipharm` (you can choose any name) user to
+Add `ipharm` (you can choose any name) user to
 iPharm:  [create user](http://localhost:8002/admin/users/user/add/).
 
 Create token for the added user:  [create token](http://localhost:8002/admin/authtoken/tokenproxy/add/).
