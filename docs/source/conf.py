@@ -70,7 +70,7 @@ templates_path = ["_templates"]
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-source_suffix = ['.rst', '.md']
+source_suffix = [".rst", ".md"]
 # source_suffix = ".rst"
 
 # The master toctree document.
@@ -148,7 +148,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "iZadanky.tex", "iZadanky Documentation", "Conceptica s.r.o.", "manual"),
+    (
+        master_doc,
+        "iZadanky.tex",
+        "iZadanky Documentation",
+        "Conceptica s.r.o.",
+        "manual",
+    ),
 ]
 
 
