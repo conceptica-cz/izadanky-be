@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>requisitions.views package &mdash; iZadanky  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="updates package" href="updates.html" />
+    <link rel="prev" title="requisitions.services package" href="requisitions.services.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> iZadanky
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables.html">Environment variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">Django commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../celery.html">Celery tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../updates.html">Model updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reports.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rest_api.html">Rest API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="common.html">common package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">references package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">reports package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="requisitions.html">requisitions package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="requisitions.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="requisitions.filters.html">requisitions.filters package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.loaders.html">requisitions.loaders package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.management.html">requisitions.management package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.managers.html">requisitions.managers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.models.html">requisitions.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.serializers.html">requisitions.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.services.html">requisitions.services package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">requisitions.views package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions.apps">requisitions.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions.tasks">requisitions.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions.urls">requisitions.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="updates.html">updates package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">users package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">iZadanky</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API reference</a> &raquo;</li>
+          <li><a href="requisitions.html">requisitions package</a> &raquo;</li>
+      <li>requisitions.views package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/requisitions.views.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="requisitions-views-package">
+<h1>requisitions.views package<a class="headerlink" href="#requisitions-views-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-requisitions.views.common">
+<span id="requisitions-views-common-module"></span><h2>requisitions.views.common module<a class="headerlink" href="#module-requisitions.views.common" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.common.HistoryView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.common.</span></span><span class="sig-name descname"><span class="pre">HistoryView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/common.html#HistoryView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.common.HistoryView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.views.APIView</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="requisitions.views.common.HistoryView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/common.html#HistoryView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.common.HistoryView.get" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.common.HistoryView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#requisitions.views.common.HistoryView.queryset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-requisitions.views.patients">
+<span id="requisitions-views-patients-module"></span><h2>requisitions.views.patients module<a class="headerlink" href="#module-requisitions.views.patients" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientDetailView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.patients.</span></span><span class="sig-name descname"><span class="pre">PatientDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/patients.html#PatientDetailView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.patients.PatientDetailView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.RetrieveAPIView</span></code></p>
+<p>Get patient.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientDetailView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">QuerySet</span></em><a class="headerlink" href="#requisitions.views.patients.PatientDetailView.queryset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientDetailView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#requisitions.views.patients.PatientDetailView.serializer_class" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="requisitions.serializers.html#requisitions.serializers.patients.PatientSerializer" title="requisitions.serializers.patients.PatientSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">requisitions.serializers.patients.PatientSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientHistoryView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.patients.</span></span><span class="sig-name descname"><span class="pre">PatientHistoryView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/patients.html#PatientHistoryView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.patients.PatientHistoryView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#requisitions.views.common.HistoryView" title="requisitions.views.common.HistoryView"><code class="xref py py-class docutils literal notranslate"><span class="pre">requisitions.views.common.HistoryView</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientHistoryView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">QuerySet</span></em><a class="headerlink" href="#requisitions.views.patients.PatientHistoryView.queryset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientListView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.patients.</span></span><span class="sig-name descname"><span class="pre">PatientListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/patients.html#PatientListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.patients.PatientListView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.ListAPIView</span></code></p>
+<p>Get all patients.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientListView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">QuerySet</span></em><a class="headerlink" href="#requisitions.views.patients.PatientListView.queryset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientListView.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#requisitions.views.patients.PatientListView.serializer_class" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="requisitions.serializers.html#requisitions.serializers.patients.PatientSerializer" title="requisitions.serializers.patients.PatientSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">requisitions.serializers.patients.PatientSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientLoadView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.patients.</span></span><span class="sig-name descname"><span class="pre">PatientLoadView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/patients.html#PatientLoadView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.patients.PatientLoadView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.views.APIView</span></code></p>
+<p>Start a long-running background task of getting the patient via 3rd-party API.</p>
+<p>One and only one of the following parameters must be provided:
+<cite>birth_number</cite>, <cite>external_id</cite>.</p>
+<p>To check the status of the task, use the <cite>/tasks/&lt;task_id&gt;/</cite> endpoint.</p>
+<p>The endpoint returns only the <cite>task_id</cite>. To get the result of the task, use
+the <cite>/tasks/&lt;task_id&gt;/</cite> endpoint. The result will be returned by
+the <cite>/tasks/&lt;task_id&gt;/</cite> endpoint in the result field.</p>
+<p>If patient is found by 3rd-party API, <cite>Patient</cite> instance will be created or got
+and the result will be dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span> <span class="c1"># patient serialized data,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If patent not found, the result will be dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;PatientNotFound&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If API is not available, the result will be dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;APIisNotAvailable&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If API returns error, the result will be dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;APIError&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="requisitions.views.patients.PatientLoadView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/patients.html#PatientLoadView.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.patients.PatientLoadView.post" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-requisitions.views.requisitions">
+<span id="requisitions-views-requisitions-module"></span><h2>requisitions.views.requisitions module<a class="headerlink" href="#module-requisitions.views.requisitions" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionDetailView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.requisitions.</span></span><span class="sig-name descname"><span class="pre">RequisitionDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/requisitions.html#RequisitionDetailView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.requisitions.RequisitionDetailView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.RetrieveUpdateAPIView</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionDetailView.get_serializer_class">
+<span class="sig-name descname"><span class="pre">get_serializer_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/requisitions.html#RequisitionDetailView.get_serializer_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.requisitions.RequisitionDetailView.get_serializer_class" title="Permalink to this definition"></a></dt>
+<dd><p>Return the class to use for the serializer.
+Defaults to using <cite>self.serializer_class</cite>.</p>
+<p>You may want to override this if you need to provide different
+serializations depending on the incoming request.</p>
+<p>(Eg. admins get full serialization, others get basic serialization)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionDetailView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">QuerySet</span></em><a class="headerlink" href="#requisitions.views.requisitions.RequisitionDetailView.queryset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionHistoryView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.requisitions.</span></span><span class="sig-name descname"><span class="pre">RequisitionHistoryView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/requisitions.html#RequisitionHistoryView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.requisitions.RequisitionHistoryView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#requisitions.views.common.HistoryView" title="requisitions.views.common.HistoryView"><code class="xref py py-class docutils literal notranslate"><span class="pre">requisitions.views.common.HistoryView</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionHistoryView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">QuerySet</span></em><a class="headerlink" href="#requisitions.views.requisitions.RequisitionHistoryView.queryset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionListView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.views.requisitions.</span></span><span class="sig-name descname"><span class="pre">RequisitionListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/requisitions.html#RequisitionListView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.requisitions.RequisitionListView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.ListCreateAPIView</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionListView.filter_backends">
+<span class="sig-name descname"><span class="pre">filter_backends</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;class</span> <span class="pre">'django_filters.rest_framework.backends.DjangoFilterBackend'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'rest_framework.filters.SearchFilter'&gt;]</span></em><a class="headerlink" href="#requisitions.views.requisitions.RequisitionListView.filter_backends" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionListView.filterset_class">
+<span class="sig-name descname"><span class="pre">filterset_class</span></span><a class="headerlink" href="#requisitions.views.requisitions.RequisitionListView.filterset_class" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="requisitions.filters.html#requisitions.filters.requisitions.RequisitionFilter" title="requisitions.filters.requisitions.RequisitionFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">requisitions.filters.requisitions.RequisitionFilter</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionListView.get_serializer_class">
+<span class="sig-name descname"><span class="pre">get_serializer_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/requisitions.html#RequisitionListView.get_serializer_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.requisitions.RequisitionListView.get_serializer_class" title="Permalink to this definition"></a></dt>
+<dd><p>Return the class to use for the serializer.
+Defaults to using <cite>self.serializer_class</cite>.</p>
+<p>You may want to override this if you need to provide different
+serializations depending on the incoming request.</p>
+<p>(Eg. admins get full serialization, others get basic serialization)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionListView.perform_create">
+<span class="sig-name descname"><span class="pre">perform_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">serializer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/views/requisitions.html#RequisitionListView.perform_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.views.requisitions.RequisitionListView.perform_create" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.views.requisitions.RequisitionListView.queryset">
+<span class="sig-name descname"><span class="pre">queryset</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">QuerySet</span></em><a class="headerlink" href="#requisitions.views.requisitions.RequisitionListView.queryset" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-requisitions.views">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-requisitions.views" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="requisitions.services.html" class="btn btn-neutral float-left" title="requisitions.services package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="updates.html" class="btn btn-neutral float-right" title="updates package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Conceptica s.r.o.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
