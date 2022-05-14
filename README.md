@@ -103,13 +103,13 @@ You have to add the token to the `.envs/.development/.izadanky_app` file (`IPHAR
 
 Create a environment variable files for iZadanky app:
 
-- `./.envs/.development/.ipharm_app`
-- `./.envs/.development/.ipharm_postgres`
-- `./.envs/.development/.ipharm_redis`
+- `./.envs/.development/.izadanky_app`
+- `./.envs/.development/.izadanky_postgres`
+- `./.envs/.development/.izadanky_redis`
 
 In the files, set environment variables, mainly those that do not have default values.
 
-See the [Environment variables](#Environment variables) section below for more information about variables.
+See the **Environment variables** section below for more information about variables.
 
 Note: you don't have to add `UNIS...` variables for development.
 
