@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>requisitions.loaders package &mdash; iZadanky  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="requisitions.management package" href="requisitions.management.html" />
+    <link rel="prev" title="requisitions.filters package" href="requisitions.filters.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> iZadanky
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables.html">Environment variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">Django commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../celery.html">Celery tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../updates.html">Model updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reports.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rest_api.html">Rest API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="common.html">common package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">references package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">reports package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="requisitions.html">requisitions package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="requisitions.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="requisitions.filters.html">requisitions.filters package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">requisitions.loaders package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.management.html">requisitions.management package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.managers.html">requisitions.managers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.models.html">requisitions.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.serializers.html">requisitions.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.services.html">requisitions.services package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.views.html">requisitions.views package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions.apps">requisitions.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions.tasks">requisitions.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions.urls">requisitions.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.html#module-requisitions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="updates.html">updates package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">users package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">iZadanky</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API reference</a> &raquo;</li>
+          <li><a href="requisitions.html">requisitions package</a> &raquo;</li>
+      <li>requisitions.loaders package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/requisitions.loaders.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="requisitions-loaders-package">
+<h1>requisitions.loaders package<a class="headerlink" href="#requisitions-loaders-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-requisitions.loaders.ipharm_patient">
+<span id="requisitions-loaders-ipharm-patient-module"></span><h2>requisitions.loaders.ipharm_patient module<a class="headerlink" href="#module-requisitions.loaders.ipharm_patient" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="requisitions.loaders.ipharm_patient.load_ipharm_patient">
+<span class="sig-prename descclassname"><span class="pre">requisitions.loaders.ipharm_patient.</span></span><span class="sig-name descname"><span class="pre">load_ipharm_patient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">birth_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/loaders/ipharm_patient.html#load_ipharm_patient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.loaders.ipharm_patient.load_ipharm_patient" title="Permalink to this definition"></a></dt>
+<dd><p>Load patient via iPharm API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>birth_number</strong> – patient’s birth number</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-requisitions.loaders.patient">
+<span id="requisitions-loaders-patient-module"></span><h2>requisitions.loaders.patient module<a class="headerlink" href="#module-requisitions.loaders.patient" title="Permalink to this headline"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.APIError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.loaders.patient.</span></span><span class="sig-name descname"><span class="pre">APIError</span></span><a class="reference internal" href="../_modules/requisitions/loaders/patient.html#APIError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.loaders.patient.APIError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.APIisNotAvailable">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.loaders.patient.</span></span><span class="sig-name descname"><span class="pre">APIisNotAvailable</span></span><a class="reference internal" href="../_modules/requisitions/loaders/patient.html#APIisNotAvailable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.loaders.patient.APIisNotAvailable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.Patient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.loaders.patient.</span></span><span class="sig-name descname"><span class="pre">Patient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">birth_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/loaders/patient.html#Patient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.loaders.patient.Patient" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Patient class</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.Patient.birth_number">
+<span class="sig-name descname"><span class="pre">birth_number</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#requisitions.loaders.patient.Patient.birth_number" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.Patient.external_id">
+<span class="sig-name descname"><span class="pre">external_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#requisitions.loaders.patient.Patient.external_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.Patient.first_name">
+<span class="sig-name descname"><span class="pre">first_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#requisitions.loaders.patient.Patient.first_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.Patient.last_name">
+<span class="sig-name descname"><span class="pre">last_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#requisitions.loaders.patient.Patient.last_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.Patient.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#requisitions.loaders.patient.Patient.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.PatientNotFound">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.loaders.patient.</span></span><span class="sig-name descname"><span class="pre">PatientNotFound</span></span><a class="reference internal" href="../_modules/requisitions/loaders/patient.html#PatientNotFound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.loaders.patient.PatientNotFound" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="requisitions.loaders.patient.load_patient">
+<span class="sig-prename descclassname"><span class="pre">requisitions.loaders.patient.</span></span><span class="sig-name descname"><span class="pre">load_patient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">birth_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/requisitions/loaders/patient.html#load_patient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.loaders.patient.load_patient" title="Permalink to this definition"></a></dt>
+<dd><p>Get patient from third party API.</p>
+<p>If patient is found, gets or creates Patient instance and returns dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span> <span class="c1"># patient serialized data,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If patent not found, returns dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;PatientNotFound&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If API is not available, returns dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;APIisNotAvailable&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If API returns error, returns dictionary like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;APIError&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>birth_number</strong> – the patient’s birth number.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary with patient data or error description.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-requisitions.loaders">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-requisitions.loaders" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="requisitions.filters.html" class="btn btn-neutral float-left" title="requisitions.filters package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="requisitions.management.html" class="btn btn-neutral float-right" title="requisitions.management package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Conceptica s.r.o.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>requisitions package &mdash; iZadanky  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="requisitions.filters package" href="requisitions.filters.html" />
+    <link rel="prev" title="reports.management.commands package" href="reports.management.commands.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> iZadanky
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables.html">Environment variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">Django commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../celery.html">Celery tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../updates.html">Model updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reports.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rest_api.html">Rest API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="common.html">common package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">references package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">reports package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">requisitions package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.filters.html">requisitions.filters package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.loaders.html">requisitions.loaders package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.management.html">requisitions.management package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.managers.html">requisitions.managers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.models.html">requisitions.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.serializers.html">requisitions.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.services.html">requisitions.services package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.views.html">requisitions.views package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-requisitions.apps">requisitions.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-requisitions.tasks">requisitions.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-requisitions.urls">requisitions.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-requisitions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="updates.html">updates package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">users package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">iZadanky</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API reference</a> &raquo;</li>
+      <li>requisitions package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/requisitions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="requisitions-package">
+<h1>requisitions package<a class="headerlink" href="#requisitions-package" title="Permalink to this headline"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.filters.html">requisitions.filters package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.filters.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.filters.html#module-requisitions.filters.requisitions">requisitions.filters.requisitions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.filters.html#module-requisitions.filters">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.loaders.html">requisitions.loaders package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.loaders.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.loaders.html#module-requisitions.loaders.ipharm_patient">requisitions.loaders.ipharm_patient module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.loaders.html#module-requisitions.loaders.patient">requisitions.loaders.patient module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.loaders.html#module-requisitions.loaders">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.management.html">requisitions.management package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.management.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requisitions.management.commands.html">requisitions.management.commands package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.management.commands.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.management.commands.html#module-requisitions.management.commands.populate">requisitions.management.commands.populate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="requisitions.management.commands.html#module-requisitions.management.commands">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.management.html#module-requisitions.management">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.managers.html">requisitions.managers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.managers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.managers.html#module-requisitions.managers.requisitions">requisitions.managers.requisitions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.managers.html#module-requisitions.managers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.models.html">requisitions.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.models.html#module-requisitions.models.patients">requisitions.models.patients module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.models.html#module-requisitions.models.requisitions">requisitions.models.requisitions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.models.html#module-requisitions.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.serializers.html">requisitions.serializers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.serializers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.serializers.html#module-requisitions.serializers.patients">requisitions.serializers.patients module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.serializers.html#module-requisitions.serializers.requisitions">requisitions.serializers.requisitions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.serializers.html#module-requisitions.serializers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.services.html">requisitions.services package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.services.html#module-requisitions.services">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="requisitions.views.html">requisitions.views package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.views.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.views.html#module-requisitions.views.common">requisitions.views.common module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.views.html#module-requisitions.views.patients">requisitions.views.patients module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.views.html#module-requisitions.views.requisitions">requisitions.views.requisitions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.views.html#module-requisitions.views">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-requisitions.apps">
+<span id="requisitions-apps-module"></span><h2>requisitions.apps module<a class="headerlink" href="#module-requisitions.apps" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="requisitions.apps.RequisitionConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">requisitions.apps.</span></span><span class="sig-name descname"><span class="pre">RequisitionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/requisitions/apps.html#RequisitionConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#requisitions.apps.RequisitionConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.apps.RequisitionConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#requisitions.apps.RequisitionConfig.default_auto_field" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="requisitions.apps.RequisitionConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'requisitions'</span></em><a class="headerlink" href="#requisitions.apps.RequisitionConfig.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-requisitions.tasks">
+<span id="requisitions-tasks-module"></span><h2>requisitions.tasks module<a class="headerlink" href="#module-requisitions.tasks" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-requisitions.urls">
+<span id="requisitions-urls-module"></span><h2>requisitions.urls module<a class="headerlink" href="#module-requisitions.urls" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-requisitions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-requisitions" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reports.management.commands.html" class="btn btn-neutral float-left" title="reports.management.commands package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="requisitions.filters.html" class="btn btn-neutral float-right" title="requisitions.filters package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Conceptica s.r.o.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,106 +1,262 @@
+# iZadanky backend app
 
-# iPharm backend app
-
-## Installation and run
-
-**Requirements:**
+## Requirements
 
 You need `docker` and `docker-compose` to run the app.
 
-**Clone repo:**
+## Installation and configuration
 
-```shell
-git clone https://github.com/conceptica-cz/ipharm-be.git
+### Clone the repository
+
+```
+$ git clone https://github.com/conceptica-cz/izadanky-be.git
+$ cd izadanky-be
 ```
 
-**Add environment variables files:**
+### Add iCiselniky environment variable files
 
-The application uses multiple environment files. You have to create them and add set variables.
-See the **Environment Variables** [section](#environment-variables) below.
+The app depends on the [iCiselniky app](https://github.com/conceptica-cz/iciselniky-be).
 
-You have also to set variables for reference (iciselniky) app. 
-See the **Environment Variables** section of reference app's
-[README](https://github.com/conceptica-cz/iciselniky-be#environment-variables).
+Create a environment variable files for iCiselniky app:
 
-**Run app locally:**
+- `./.envs/.development/.iciselniky_app`
+- `./.envs/.development/.iciselniky_postgres`
+- `./.envs/.development/.iciselniky_redis`
 
-```shell
-cd ipharm-be
-docker-compose -f docker-compose.yml up -d
+See the [iCiselniky app](https://github.com/conceptica-cz/iciselniky-be) for more information about variables.
+
+### Run iCiselniky app
+
+```
+$ docker-compose up -d iciselniky-app
 ```
 
-**Populate database with fake data and create superuser (you need to do it only once):**
+### Create iCiselniky superuser
 
-```shell
- docker-compose exec app python manage.py populate
- docker-compose exec app python manage.py createsuperuser
+```
+$ docker-compose exec iciselniky-app python manage.py createsuperuser
 ```
 
-Now app is running. Check http://localhost:8000
-Use superuser credentials to add some user.
+Now you can login to the iCiselniky app's admin on localhost:8001/admin/
 
+### Populate iCiselniky database with fake data (optional, development only)
 
-**Stop app and remove containers:**
-
-```shell
-docker-compose down
 ```
+$ docker-compose exec iciselniky-app python manage.py populate
+```
+
+### Add `izadanky` user and token to iCiselniky
+
+To use [iCiselniky](https://github.com/conceptica-cz/iciselniky-be) API you have to get a token.
+
+Create `ipharm` (you can choose any name) user to
+iCiselniky:  [create user](http://localhost:8002/admin/users/user/add/).
+
+Create token for the added user:  [create token](http://localhost:8002/admin/authtoken/tokenproxy/add/).
+
+You have to add the token to the `.envs/.development/.izadanky_app` file (`ICISELNIKY_TOKEN` variable).
+
+### Add iPharm environment variable files
+
+The app depends on the [iPharm app](https://github.com/conceptica-cz/ipharm-be).
+
+Create a environment variable files for iP, they are set automaticallyharm app:
+
+- `./.envs/.development/.ipharm_app`
+- `./.envs/.development/.ipharm_postgres`
+- `./.envs/.development/.ipharm_redis`
+
+See the [iPharm app](https://github.com/conceptica-cz/ipharm-be) for more information about variables.
+
+### Run iPharm app
+
+```
+$ docker-compose up -d ipharm-app
+```
+
+### Create iPharm superuser
+
+```
+$ docker-compose exec ipharm-app python manage.py createsuperuser
+```
+
+Now you can login to the iPharm app's admin on localhost:8001/admin/
+
+### Populate iPharm database with fake data (optional, development only)
+
+```
+$ docker-compose exec ipharm-app python manage.py populate
+```
+
+### Add `izadanky` user and token to iPharm
+
+To use [iPharm](https://github.com/conceptica-cz/ipharm-be) API you have to get a token.
+
+Create `ipharm` (you can choose any name) user to
+iPharm:  [create user](http://localhost:8002/admin/users/user/add/).
+
+Create token for the added user:  [create token](http://localhost:8002/admin/authtoken/tokenproxy/add/).
+
+You have to add the token to the `.envs/.development/.izadanky_app` file (`IPHARM_TOKEN` variable).
+
+### Add environment variable files
+
+Create a environment variable files for iZadanky app:
+
+- `./.envs/.development/.ipharm_app`
+- `./.envs/.development/.ipharm_postgres`
+- `./.envs/.development/.ipharm_redis`
+
+In the files, set environment variables, mainly those that do not have default values.
+
+See the [Environment variables](#Environment variables) section below for more information about variables.
+
+Note: you don't have to add `UNIS...` variables for development.
+
+### Run the app
+
+```
+$ docker-compose up -d
+```
+
+### Create superuser
+
+```
+$ docker-compose exec izadanky-app python manage.py createsuperuser
+```
+
+Now you can login to the app's admin on localhost:8000/admin/
+
+### Populate database with fake data (optional, development only)
+
+```
+$ docker-compose exec izadanky-app python manage.py populate
+```
+
+## Documentation
+
+The documentation is available in the source code in the `/docs/build` directory
 
 ## Environment variables
 
-Environment variables are used to configure the docker services. 
-They are set in files `./.envs/.development/.ipharm_app`, `./.envs/.development/.ipharm_postgres` 
-and `./.envs/.development/.ipharm_redis`.
+### iPharm variables
 
-### App variables (`./.envs/.development/.ipharm_app`)
+File: `./.envs/.development/.izadanky_app`
 
-Django application variables. Used by `ipharm-app`, `ipharm-worker`, `ipharm-beat`  docker service.
+Django application variables. Used by `izadanky-app`, `izadanky-worker-high-priority`, `izadanky-worker-low-priority`
+, `izadanky-beat`  docker services.
 
-`SECRET_KEY` - (must be set) django secret key.
+#### ALLOWED_HOSTS
 
-`ALLOWED_HOSTS` - (must be set) django `ALLOWED_HOSTS` - list of hosts separated by comma (or just `*`).
+No default value (must be set).
 
-`BASE_IPHARM_REFERENCES_URL` - (default is `http://iciselniky-app:8000/api/v1`) base references API (iciselniky app) url.
+Django `ALLOWED_HOSTS` - list of hosts separated by comma (or just `*`).
 
-`IPHARM_REFERENCES_TOKEN` - (must be set) references API (iciselniky app) token.
+#### BASE_ICISELNIKY_URL
 
-`BASE_REFERENCES_URL` - (must be set) external API (patient) url.
+Default: `http://iciselniky-app:8000/api/v1`
 
-`REFERENCES_TOKEN` - (must be set) external API (patient) token.
+Base iCiselniky API url.
 
+#### ICISELNIKY_TOKEN
 
-`DEBUG` - (default is `False`) django `DEBUG` variable.
+Default: emtpy value.
 
-`ENVIRONMENT` - (default is `production`) Sentry environment.
+iCiselniky API token.
 
-`LOG_LEVEL` - (default is `"INFO"`) logging level.
+#### BASE_UNIS_URL
 
-### Postgres variables (`./.envs/.development/.ipharm_postgres`)
+Default: emtpy value.
 
-Postgres variables. Used by `ipharm-postgres` and also by `ipharm-app`, `ipharm-worker`, 
-`ipharm-beat` docker services.
+Base UNIS API (patient API) url.
 
-`POSTGRES_HOST` - (must be set) postgres host.
+#### UNIS_TOKEN
 
-`POSTGRES_PORT` - (must be set) postgres port.
+Default: emtpy value.
 
-`POSTGRES_DB` - (must be set) postgres database name.
+Unis API (patient API) token.
 
-`POSTGRES_USER` - (must be set) postgres user.
+#### DEBUG
 
-`POSTGRES_PASSWORD` - (must be set) postgres password.
+Default: `False`
 
-### Redis variables (`./.envs/.development/.ipharm_redis`)
+#### ENVIRONMENT
 
-Redis variables. Used by `ipharm-redis` and also by `ipharm-app`, `ipharm-worker`, `ipharm-beat`, 
-`ipharm-flower` docker services.
+Default: `production`
 
-`REDIS_HOST` - (must be set) redis host.
+App's environment.
 
-`REDIS_PORT` - (must be set) redis port.
+#### LOG_LEVEL
 
-`CELERY_BROKER_URL` - (must be set) broker set. Used by flower.
+Default: `INFO`
 
+Logging level.
+
+#### SECRET_KEY
+
+No default value (must be set).
+
+Django secret key.
+
+### Postgres variables
+
+File: `./.envs/.development/.izadanky_postgres`
+
+Postgres variables. Used by `izadanky-postgres` and also by `izadanky-app`, `izadanky-worker`, `izadanky-beat` docker
+services.
+
+#### POSTGRES_DB
+
+No default value (must be set).
+
+Postgres database name.
+
+#### POSTGRES_PASSWORD
+
+No default value (must be set).
+
+Postgres database password.
+
+#### POSTGRES_HOST
+
+No default value (must be set).
+
+Postgres database host.
+
+#### POSTGRES_PORT
+
+No default value (must be set).
+
+Postgres database port.
+
+#### POSTGRES_USER
+
+No default value (must be set).
+
+Postrgres database user.
+
+### Redis variables
+
+Redis variables. Used by `izadanky-redis` and also by `izadanky-app`, `izadanky-worker`, `izadanky-beat`
+, `izadanky-flower` docker services.
+
+#### CELERY_BROKER_URL
+
+No default value (must be set).
+
+Celery broker url. Used by flower worker.
+
+#### REDIS_HOST
+
+No default value (must be set).
+
+Redis host.
+
+#### REDIS_PORT
+
+No default value (must be set).
+
+Redis port.
 
 ## REST API
 

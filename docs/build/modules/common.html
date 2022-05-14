@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>common package &mdash; iZadanky  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="references package" href="references.html" />
+    <link rel="prev" title="API reference" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> iZadanky
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables.html">Environment variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commands.html">Django commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../celery.html">Celery tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../updates.html">Model updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reports.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rest_api.html">Rest API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">common package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.apps">common.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.authentication">common.authentication module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.managers">common.managers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.models">common.models module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.serializers">common.serializers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.tasks">common.tasks module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.urls">common.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.utils">common.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common.views">common.views module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">references package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">reports package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requisitions.html">requisitions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updates.html">updates package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">users package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">iZadanky</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API reference</a> &raquo;</li>
+      <li>common package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/common.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="common-package">
+<h1>common package<a class="headerlink" href="#common-package" title="Permalink to this headline"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-common.apps">
+<span id="common-apps-module"></span><h2>common.apps module<a class="headerlink" href="#module-common.apps" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.apps.CommonConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.apps.</span></span><span class="sig-name descname"><span class="pre">CommonConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/apps.html#CommonConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.apps.CommonConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.apps.CommonConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#common.apps.CommonConfig.default_auto_field" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.apps.CommonConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'common'</span></em><a class="headerlink" href="#common.apps.CommonConfig.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-common.authentication">
+<span id="common-authentication-module"></span><h2>common.authentication module<a class="headerlink" href="#module-common.authentication" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.authentication.BearerTokenAuthentication">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.authentication.</span></span><span class="sig-name descname"><span class="pre">BearerTokenAuthentication</span></span><a class="reference internal" href="../_modules/common/authentication.html#BearerTokenAuthentication"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.authentication.BearerTokenAuthentication" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.authentication.TokenAuthentication</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.authentication.BearerTokenAuthentication.keyword">
+<span class="sig-name descname"><span class="pre">keyword</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Bearer'</span></em><a class="headerlink" href="#common.authentication.BearerTokenAuthentication.keyword" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-common.managers">
+<span id="common-managers-module"></span><h2>common.managers module<a class="headerlink" href="#module-common.managers" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.managers.BaseSoftDeletableManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.managers.</span></span><span class="sig-name descname"><span class="pre">BaseSoftDeletableManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/managers.html#BaseSoftDeletableManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.managers.BaseSoftDeletableManager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.manager.Manager</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="common.managers.BaseSoftDeletableManager.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/managers.html#BaseSoftDeletableManager.get_queryset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.managers.BaseSoftDeletableManager.get_queryset" title="Permalink to this definition"></a></dt>
+<dd><p>Return a new QuerySet object. Subclasses can override this method to
+customize the behavior of the Manager.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="common.managers.BaseSoftDeletableManager.hard_delete">
+<span class="sig-name descname"><span class="pre">hard_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/managers.html#BaseSoftDeletableManager.hard_delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.managers.BaseSoftDeletableManager.hard_delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-common.models">
+<span id="common-models-module"></span><h2>common.models module<a class="headerlink" href="#module-common.models" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.models.BaseHistoricalModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.models.</span></span><span class="sig-name descname"><span class="pre">BaseHistoricalModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/models.html#BaseHistoricalModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.models.BaseHistoricalModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#common.models.BaseSoftDeletableModel" title="common.models.BaseSoftDeletableModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">common.models.BaseSoftDeletableModel</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.models.BaseHistoricalModel.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/common/models.html#BaseHistoricalModel.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.models.BaseHistoricalModel.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.models.BaseHistoricalModel.Meta.abstract">
+<span class="sig-name descname"><span class="pre">abstract</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#common.models.BaseHistoricalModel.Meta.abstract" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="common.models.BaseHistoricalModel.save_without_historical_record">
+<span class="sig-name descname"><span class="pre">save_without_historical_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#common.models.BaseHistoricalModel.save_without_historical_record" title="Permalink to this definition"></a></dt>
+<dd><p>Save model without saving a historical record</p>
+<p>Make sure you know what you’re doing before you use this method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.models.</span></span><span class="sig-name descname"><span class="pre">BaseSoftDeletableModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/models.html#BaseSoftDeletableModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.models.BaseSoftDeletableModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/common/models.html#BaseSoftDeletableModel.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.models.BaseSoftDeletableModel.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel.Meta.abstract">
+<span class="sig-name descname"><span class="pre">abstract</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#common.models.BaseSoftDeletableModel.Meta.abstract" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel.all_objects">
+<span class="sig-name descname"><span class="pre">all_objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;common.managers.BaseSoftDeletableManager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#common.models.BaseSoftDeletableModel.all_objects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/models.html#BaseSoftDeletableModel.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.models.BaseSoftDeletableModel.delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel.hard_delete">
+<span class="sig-name descname"><span class="pre">hard_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">using</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_parents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/models.html#BaseSoftDeletableModel.hard_delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.models.BaseSoftDeletableModel.hard_delete" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel.is_deleted">
+<span class="sig-name descname"><span class="pre">is_deleted</span></span><a class="headerlink" href="#common.models.BaseSoftDeletableModel.is_deleted" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="common.models.BaseSoftDeletableModel.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;common.managers.BaseSoftDeletableManager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#common.models.BaseSoftDeletableModel.objects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-common.serializers">
+<span id="common-serializers-module"></span><h2>common.serializers module<a class="headerlink" href="#module-common.serializers" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.serializers.ResultField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.serializers.</span></span><span class="sig-name descname"><span class="pre">ResultField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/serializers.html#ResultField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.serializers.ResultField" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.fields.Field</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="common.serializers.ResultField.to_internal_value">
+<span class="sig-name descname"><span class="pre">to_internal_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/serializers.html#ResultField.to_internal_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.serializers.ResultField.to_internal_value" title="Permalink to this definition"></a></dt>
+<dd><p>Transform the <em>incoming</em> primitive data into a native value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="common.serializers.ResultField.to_representation">
+<span class="sig-name descname"><span class="pre">to_representation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/serializers.html#ResultField.to_representation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.serializers.ResultField.to_representation" title="Permalink to this definition"></a></dt>
+<dd><p>Transform the <em>outgoing</em> native value into primitive data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="common.serializers.TaskSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.serializers.</span></span><span class="sig-name descname"><span class="pre">TaskSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/serializers.html#TaskSerializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.serializers.TaskSerializer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.serializers.Serializer</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-common.tasks">
+<span id="common-tasks-module"></span><h2>common.tasks module<a class="headerlink" href="#module-common.tasks" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.tasks.Task">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.tasks.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">celery.result.AsyncResult</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/tasks.html#Task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.tasks.Task" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="common.tasks.TaskDoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.tasks.</span></span><span class="sig-name descname"><span class="pre">TaskDoesNotExist</span></span><a class="reference internal" href="../_modules/common/tasks.html#TaskDoesNotExist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.tasks.TaskDoesNotExist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-common.urls">
+<span id="common-urls-module"></span><h2>common.urls module<a class="headerlink" href="#module-common.urls" title="Permalink to this headline"></a></h2>
+</section>
+<section id="module-common.utils">
+<span id="common-utils-module"></span><h2>common.utils module<a class="headerlink" href="#module-common.utils" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="common.utils.get_func_from_path">
+<span class="sig-prename descclassname"><span class="pre">common.utils.</span></span><span class="sig-name descname"><span class="pre">get_func_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dotted_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/utils.html#get_func_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.utils.get_func_from_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-common.views">
+<span id="common-views-module"></span><h2>common.views module<a class="headerlink" href="#module-common.views" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="common.views.TaskView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">common.views.</span></span><span class="sig-name descname"><span class="pre">TaskView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/views.html#TaskView"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.views.TaskView" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.views.APIView</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="common.views.TaskView.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/common/views.html#TaskView.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#common.views.TaskView.get" title="Permalink to this definition"></a></dt>
+<dd><p>Get task status and result.</p>
+<p>Field <cite>state</cite> corresponds to <cite>celery.states</cite>
+(see <a class="reference external" href="https://docs.celeryq.dev/en/stable/reference/celery.states.html">https://docs.celeryq.dev/en/stable/reference/celery.states.html</a>).</p>
+<p>A status of <cite>STARTED</cite> means that the task has started.
+A status of <cite>SUCCESS</cite> means that the task has finished successfully.
+A status of <cite>FAILURE</cite> means that the task has failed.</p>
+<p>The response contains a field <cite>result</cite> only if the task
+has finished successfully.</p>
+<p>Field <cite>result</cite> depends on the task. Usually it is a dictionary.
+See the description of endpoint that initializes the task
+(e.g. <cite>/api/v1/patients/load-patients/</cite>).</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-common">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-common" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="API reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="references.html" class="btn btn-neutral float-right" title="references package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Conceptica s.r.o.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started &mdash; iZadanky  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Environment variables" href="variables.html" />
+    <link rel="prev" title="Welcome to iZadanky’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> iZadanky
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-and-configuration">Installation and configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">Clone the repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-iciselniky-environment-variable-files">Add iCiselniky environment variable files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-iciselniky-app">Run iCiselniky app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-iciselniky-superuser">Create iCiselniky superuser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#populate-iciselniky-database-with-fake-data-optional-development-only">Populate iCiselniky database with fake data (optional, development only)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-izadanky-user-and-token-to-iciselniky">Add <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user and token to iCiselniky</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-ipharm-environment-variable-files">Add iPharm environment variable files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-ipharm-app">Run iPharm app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-ipharm-superuser">Create iPharm superuser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#populate-ipharm-database-with-fake-data-optional-development-only">Populate iPharm database with fake data (optional, development only)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-izadanky-user-and-token-to-ipharm">Add <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user and token to iPharm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-environment-variable-files">Add environment variable files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-app">Run the app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-superuser">Create superuser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#populate-database-with-fake-data-optional-development-only">Populate database with fake data (optional, development only)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Environment variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Django commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="celery.html">Celery tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updates.html">Model updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest_api.html">Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/modules.html">API reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iZadanky</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<span id="id1"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h2>
+<p>You need <code class="docutils literal notranslate"><span class="pre">docker</span></code> and <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> to run the app.</p>
+</section>
+<section id="installation-and-configuration">
+<h2>Installation and configuration<a class="headerlink" href="#installation-and-configuration" title="Permalink to this headline"></a></h2>
+<section id="clone-the-repository">
+<h3>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/conceptica-cz/izadanky-be.git
+$ cd izadanky-be
+</pre></div>
+</div>
+</section>
+<section id="add-iciselniky-environment-variable-files">
+<h3>Add iCiselniky environment variable files<a class="headerlink" href="#add-iciselniky-environment-variable-files" title="Permalink to this headline"></a></h3>
+<p>The app depends on the <a class="reference external" href="https://github.com/conceptica-cz/iciselniky-be">iCiselniky app</a>.</p>
+<p>Create a environment variable files for iCiselniky app:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.iciselniky_app</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.iciselniky_postgres</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.iciselniky_redis</span></code></p></li>
+</ul>
+<p>See the <a class="reference external" href="https://github.com/conceptica-cz/iciselniky-be">iCiselniky app</a> for more information about variables.</p>
+</section>
+<section id="run-iciselniky-app">
+<h3>Run iCiselniky app<a class="headerlink" href="#run-iciselniky-app" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose up -d iciselniky-app
+</pre></div>
+</div>
+</section>
+<section id="create-iciselniky-superuser">
+<h3>Create iCiselniky superuser<a class="headerlink" href="#create-iciselniky-superuser" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec iciselniky-app python manage.py createsuperuser
+</pre></div>
+</div>
+<p>Now you can login to the iCiselniky app’s admin on localhost:8001/admin/</p>
+</section>
+<section id="populate-iciselniky-database-with-fake-data-optional-development-only">
+<h3>Populate iCiselniky database with fake data (optional, development only)<a class="headerlink" href="#populate-iciselniky-database-with-fake-data-optional-development-only" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec iciselniky-app python manage.py populate
+</pre></div>
+</div>
+</section>
+<section id="add-izadanky-user-and-token-to-iciselniky">
+<h3>Add <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user and token to iCiselniky<a class="headerlink" href="#add-izadanky-user-and-token-to-iciselniky" title="Permalink to this headline"></a></h3>
+<p>To use <a class="reference external" href="https://github.com/conceptica-cz/iciselniky-be">iCiselniky</a> API you have to get a token.</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">ipharm</span></code> (you can choose any name) user to
+iCiselniky:  <a class="reference external" href="http://localhost:8002/admin/users/user/add/">create user</a>.</p>
+<p>Create token for the added user:  <a class="reference external" href="http://localhost:8002/admin/authtoken/tokenproxy/add/">create token</a>.</p>
+<p>You have to add the token to the <code class="docutils literal notranslate"><span class="pre">.envs/.development/.izadanky_app</span></code> file (<code class="docutils literal notranslate"><span class="pre">ICISELNIKY_TOKEN</span></code> variable).</p>
+</section>
+<section id="add-ipharm-environment-variable-files">
+<h3>Add iPharm environment variable files<a class="headerlink" href="#add-ipharm-environment-variable-files" title="Permalink to this headline"></a></h3>
+<p>The app depends on the <a class="reference external" href="https://github.com/conceptica-cz/ipharm-be">iPharm app</a>.</p>
+<p>Create a environment variable files for iP, they are set automaticallyharm app:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.ipharm_app</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.ipharm_postgres</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.ipharm_redis</span></code></p></li>
+</ul>
+<p>See the <a class="reference external" href="https://github.com/conceptica-cz/ipharm-be">iPharm app</a> for more information about variables.</p>
+</section>
+<section id="run-ipharm-app">
+<h3>Run iPharm app<a class="headerlink" href="#run-ipharm-app" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose up -d ipharm-app
+</pre></div>
+</div>
+</section>
+<section id="create-ipharm-superuser">
+<h3>Create iPharm superuser<a class="headerlink" href="#create-ipharm-superuser" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec ipharm-app python manage.py createsuperuser
+</pre></div>
+</div>
+<p>Now you can login to the iPharm app’s admin on localhost:8001/admin/</p>
+</section>
+<section id="populate-ipharm-database-with-fake-data-optional-development-only">
+<h3>Populate iPharm database with fake data (optional, development only)<a class="headerlink" href="#populate-ipharm-database-with-fake-data-optional-development-only" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec ipharm-app python manage.py populate
+</pre></div>
+</div>
+</section>
+<section id="add-izadanky-user-and-token-to-ipharm">
+<h3>Add <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user and token to iPharm<a class="headerlink" href="#add-izadanky-user-and-token-to-ipharm" title="Permalink to this headline"></a></h3>
+<p>To use <a class="reference external" href="https://github.com/conceptica-cz/ipharm-be">iPharm</a> API you have to get a token.</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">ipharm</span></code> (you can choose any name) user to
+iPharm:  <a class="reference external" href="http://localhost:8002/admin/users/user/add/">create user</a>.</p>
+<p>Create token for the added user:  <a class="reference external" href="http://localhost:8002/admin/authtoken/tokenproxy/add/">create token</a>.</p>
+<p>You have to add the token to the <code class="docutils literal notranslate"><span class="pre">.envs/.development/.izadanky_app</span></code> file (<code class="docutils literal notranslate"><span class="pre">IPHARM_TOKEN</span></code> variable).</p>
+</section>
+<section id="add-environment-variable-files">
+<h3>Add environment variable files<a class="headerlink" href="#add-environment-variable-files" title="Permalink to this headline"></a></h3>
+<p>Create a environment variable files for iZadanky app:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.ipharm_app</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.ipharm_postgres</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./.envs/.development/.ipharm_redis</span></code></p></li>
+</ul>
+<p>In the files, set environment variables, mainly those that do not have default values.</p>
+<p>See the <span class="xref std std-ref">Environment variables</span> section below for more information about variables.</p>
+<p>Note: you don’t have to add <code class="docutils literal notranslate"><span class="pre">UNIS...</span></code> variables for development.</p>
+</section>
+<section id="run-the-app">
+<h3>Run the app<a class="headerlink" href="#run-the-app" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose up -d
+</pre></div>
+</div>
+</section>
+<section id="create-superuser">
+<h3>Create superuser<a class="headerlink" href="#create-superuser" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec izadanky-app python manage.py createsuperuser
+</pre></div>
+</div>
+<p>Now you can login to the app’s admin on localhost:8000/admin/</p>
+</section>
+<section id="populate-database-with-fake-data-optional-development-only">
+<h3>Populate database with fake data (optional, development only)<a class="headerlink" href="#populate-database-with-fake-data-optional-development-only" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec izadanky-app python manage.py populate
+</pre></div>
+</div>
+</section>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline"></a></h2>
+<p>The documentation is available in the source code in the <code class="docutils literal notranslate"><span class="pre">/docs/build</span></code> directory</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to iZadanky’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="variables.html" class="btn btn-neutral float-right" title="Environment variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Conceptica s.r.o.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

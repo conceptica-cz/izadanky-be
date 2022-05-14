@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model updates &mdash; iZadanky  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reports" href="reports.html" />
+    <link rel="prev" title="Celery tasks" href="celery.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> iZadanky
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Environment variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Django commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="celery.html">Celery tasks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model updates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#update-sources">Update sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-data-loader">Default data_loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-model-updater">Default model_updater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-add-change-update-source">How to add/change update source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-updates-django-app-models">The <code class="docutils literal notranslate"><span class="pre">updates</span></code> django app models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rest_api.html">Rest API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/modules.html">API reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">iZadanky</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Model updates</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/updates.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="model-updates">
+<h1>Model updates<a class="headerlink" href="#model-updates" title="Permalink to this headline"></a></h1>
+<p>Application models (many of references, Patient, Care) are updated via 3rd party APIs. Model updates is pluggable. The
+updates impleneteation is defined in the django app <a class="reference internal" href="modules/updates.html#module-updates" title="updates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">updates()</span></code></a></p>
+<section id="update-sources">
+<h2>Update sources<a class="headerlink" href="#update-sources" title="Permalink to this headline"></a></h2>
+<p>Every update source is consists of components:</p>
+<ul class="simple">
+<li><p><strong>data_loader</strong>: it’s a function that loads data from the source and return generator of items.</p></li>
+<li><p><strong>transformers</strong>: zero or more functions that transform the data. They are applied in the order they are defined.</p></li>
+<li><p><strong>model_updater</strong>: it’s a function that updates (or create) the model with the data.</p></li>
+<li><p><strong>post_operation</strong>: zero or more functions that is called after the update.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>transformers</strong> and <strong>model_updater</strong> are applied to every data item.</p>
+</div>
+</section>
+<section id="default-data-loader">
+<h2>Default data_loader<a class="headerlink" href="#default-data-loader" title="Permalink to this headline"></a></h2>
+<p><a class="reference internal" href="modules/updates.common.html#updates.common.loaders.references_loader" title="updates.common.loaders.references_loader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">updates.common.loaders.references_loader()</span></code></a> - loads references from the iCiselniky. Supports incremental updates.</p>
+</section>
+<section id="default-model-updater">
+<h2>Default model_updater<a class="headerlink" href="#default-model-updater" title="Permalink to this headline"></a></h2>
+<p><a class="reference internal" href="modules/updates.common.html#updates.common.updaters.simple_model_updater" title="updates.common.updaters.simple_model_updater"><code class="xref py py-meth docutils literal notranslate"><span class="pre">updates.common.updaters.simple_model_updater()</span></code></a> - updates reference model of same type as the iCiselniky data.</p>
+</section>
+<section id="how-to-add-change-update-source">
+<h2>How to add/change update source<a class="headerlink" href="#how-to-add-change-update-source" title="Permalink to this headline"></a></h2>
+<p>Update source is defined in the <code class="docutils literal notranslate"><span class="pre">settings.UPDATE_SOURCES</span></code> variable. Value of this variable is a dictionary where keys
+are update source names and values are dictionaries with the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data_loader</span></code>: fully qualified name of the data_loader function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transformers</span></code>: list of fully qualified names of the transformer functions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_updater</span></code>: fully qualified name of the model_updater function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_operation</span></code>: list of fully qualified names of the post_operation function.</p></li>
+</ul>
+<p>After adding/updating new update source, you need to run <span class="xref std std-ref">create_sources</span> django command to create/update the
+appropriate <a class="reference internal" href="modules/updates.html#updates.models.Source" title="updates.models.Source"><code class="xref py py-meth docutils literal notranslate"><span class="pre">updates.models.Source()</span></code></a>instance.</p>
+</section>
+<section id="the-updates-django-app-models">
+<h2>The <code class="docutils literal notranslate"><span class="pre">updates</span></code> django app models<a class="headerlink" href="#the-updates-django-app-models" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="modules/updates.html#updates.models.Source" title="updates.models.Source"><code class="xref py py-meth docutils literal notranslate"><span class="pre">updates.models.Source()</span></code></a> - update source model.</p></li>
+<li><p><a class="reference internal" href="modules/updates.html#updates.models.Update" title="updates.models.Update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">updates.models.Update()</span></code></a> - this model is created for every update.</p></li>
+<li><p><a class="reference internal" href="modules/updates.html#updates.models.ModelUpdate" title="updates.models.ModelUpdate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">updates.models.ModelUpdate()</span></code></a> - An update can updates multiple models. Therefor this model is used to store the
+model update information.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="celery.html" class="btn btn-neutral float-left" title="Celery tasks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reports.html" class="btn btn-neutral float-right" title="Reports" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Conceptica s.r.o.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
