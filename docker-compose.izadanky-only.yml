@@ -8,6 +8,10 @@ services:
     image: izadanky_dev
     volumes: &volumes-izadanky-app
       - .:/app
+    logging: &logging
+      driver: "json-file"
+      options:
+        tag: "{{.ImageName}}|{{.Name}}"
     depends_on:
       - izadanky-postgres
     env_file: &envs-izadanky-app
@@ -15,18 +19,44 @@ services:
       - .envs/.development/.izadanky_postgres
       - .envs/.development/.izadanky_redis
     ports:
-      - "8000:8000"
+      - "8002:8000"
     command: scripts/start.sh
 
-  izadanky-worker:
-    container_name: izadanky_worker_dev
+  izadanky-worker-high-priority:
+    container_name: izadanky_worker_high_priority
+    image: izadanky_dev
+    volumes: *volumes-izadanky-app
+    logging: *logging
+    depends_on:
+      - izadanky-postgres
+      - izadanky-redis
+      - izadanky-app
+    env_file: *envs-izadanky-app
+    command: scripts/start_worker.sh -Q high_priority -n high_priority
+
+  izadanky-worker-low-priority:
+    container_name: izadanky_worker_low_priority
+    image: izadanky_dev
+    volumes: *volumes-izadanky-app
+    logging: *logging
+    depends_on:
+      - izadanky-postgres
+      - izadanky-redis
+      - izadanky-app
+    env_file: *envs-izadanky-app
+    command: scripts/start_worker.sh -Q low_priority -n low_priority
+
+  izadanky-beat:
+    container_name: izadanky_beat_dev
     image: izadanky_dev
     volumes: *volumes-izadanky-app
     depends_on:
       - izadanky-postgres
       - izadanky-redis
+      - izadanky-app
     env_file: *envs-izadanky-app
-    command: scripts/start_worker.sh
+    command: scripts/start_beat.sh
+    logging: *logging
 
   izadanky-postgres:
     container_name: izadanky_postgres
@@ -35,9 +65,17 @@ services:
       - .envs/.development/.izadanky_postgres
     volumes:
       - ./_postgres_data_izadanky:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 
   izadanky-redis:
     container_name: izadanky_redis
     image: redis:6.2-alpine
+
+  izadanky-flower:
+    image: mher/flower
+    container_name: izadanky_flower
+    env_file:
+      - .envs/.development/.izadanky_redis
+    ports:
+      - "5557:5555"
+    depends_on:
+      - izadanky-redis
