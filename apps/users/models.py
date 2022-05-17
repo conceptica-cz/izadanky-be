@@ -9,6 +9,7 @@ from users.managers import UserManager
 
 class User(AbstractUser, BaseHistoricalModel):
     is_system = models.BooleanField(default=False)
+    is_app = models.BooleanField(default=False)
 
     objects = UserManager()
 

@@ -19,7 +19,7 @@ services:
       - .envs/.development/.izadanky_postgres
       - .envs/.development/.izadanky_redis
     ports:
-      - "8000:8000"
+      - "8002:8000"
     command: scripts/start.sh
 
   izadanky-worker-high-priority:
@@ -94,7 +94,7 @@ services:
       - .envs/.development/.ipharm_postgres
       - .envs/.development/.ipharm_redis
     ports:
-      - "8001:8000"
+      - "8000:8000"
     command: scripts/start.sh
     volumes: &volumes-ipharm-app
       - ./ipharm_static:/app/static
@@ -146,7 +146,7 @@ services:
       - .envs/.development/.iciselniky_postgres
       - .envs/.development/.iciselniky_redis
     ports:
-      - "8002:8000"
+      - "8001:8000"
     command: scripts/start.sh
     volumes: &volumes-iciselniky-app
       - ./iciselniky_static:/app/static

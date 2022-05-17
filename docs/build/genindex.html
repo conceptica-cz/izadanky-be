@@ -268,6 +268,8 @@
         <li><a href="modules/common.html#module-common.authentication">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     common.managers
 
@@ -275,8 +277,6 @@
         <li><a href="modules/common.html#module-common.managers">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     common.models
 
@@ -345,18 +345,6 @@
         <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.created_at">(requisitions.models.requisitions.HistoricalRequisition attribute)</a>
 </li>
         <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.created_at">(requisitions.models.requisitions.Requisition attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.created_by">created_by (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
-
-      <ul>
-        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.created_by">(requisitions.models.requisitions.Requisition attribute)</a>
-</li>
-      </ul></li>
-      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.created_by_id">created_by_id (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
-
-      <ul>
-        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.created_by_id">(requisitions.models.requisitions.Requisition attribute)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -467,6 +455,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/updates.common.html#updates.common.loaders.ExternalReferenceError">ExternalReferenceError</a>
 </li>
+      <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionSerializer.Meta.extra_kwargs">extra_kwargs (requisitions.serializers.requisitions.RequisitionSerializer.Meta attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -494,8 +484,6 @@
 </li>
         <li><a href="modules/requisitions.serializers.html#requisitions.serializers.patients.PatientSerializer.Meta.fields">(requisitions.serializers.patients.PatientSerializer.Meta attribute)</a>
 </li>
-        <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionNestedSerializer.Meta.fields">(requisitions.serializers.requisitions.RequisitionNestedSerializer.Meta attribute)</a>
-</li>
         <li><a href="modules/users.html#users.forms.UserChangeForm.Meta.fields">(users.forms.UserChangeForm.Meta attribute)</a>
 </li>
         <li><a href="modules/users.html#users.forms.UserCreationForm.Meta.fields">(users.forms.UserCreationForm.Meta attribute)</a>
@@ -517,8 +505,6 @@
       </ul></li>
       <li><a href="modules/reports.html#reports.models.GenericReportType.file_name">file_name (reports.models.GenericReportType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/references.views.html#references.views.clinics.DepartmentListView.filter_backends">filter_backends (references.views.clinics.DepartmentListView attribute)</a>
 
       <ul>
@@ -527,6 +513,8 @@
         <li><a href="modules/requisitions.views.html#requisitions.views.requisitions.RequisitionListView.filter_backends">(requisitions.views.requisitions.RequisitionListView attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/requisitions.views.html#requisitions.views.requisitions.RequisitionListView.filterset_class">filterset_class (requisitions.views.requisitions.RequisitionListView attribute)</a>
 </li>
       <li><a href="modules/references.views.html#references.views.clinics.DepartmentListView.filterset_fields">filterset_fields (references.views.clinics.DepartmentListView attribute)</a>
@@ -728,10 +716,6 @@
       <ul>
         <li><a href="modules/reports.html#reports.models.HistoricalGenericReportFile.get_next_by_updated_at">(reports.models.HistoricalGenericReportFile method)</a>
 </li>
-        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.get_next_by_updated_at">(requisitions.models.requisitions.HistoricalRequisition method)</a>
-</li>
-        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.get_next_by_updated_at">(requisitions.models.requisitions.Requisition method)</a>
-</li>
       </ul></li>
       <li><a href="modules/users.html#users.views.UserView.get_object">get_object() (users.views.UserView method)</a>
 </li>
@@ -792,10 +776,6 @@
       <ul>
         <li><a href="modules/reports.html#reports.models.HistoricalGenericReportFile.get_previous_by_updated_at">(reports.models.HistoricalGenericReportFile method)</a>
 </li>
-        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.get_previous_by_updated_at">(requisitions.models.requisitions.HistoricalRequisition method)</a>
-</li>
-        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.get_previous_by_updated_at">(requisitions.models.requisitions.Requisition method)</a>
-</li>
       </ul></li>
       <li><a href="modules/common.html#common.managers.BaseSoftDeletableManager.get_queryset">get_queryset() (common.managers.BaseSoftDeletableManager method)</a>
 
@@ -817,8 +797,20 @@
         <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.get_state_display">(requisitions.models.requisitions.Requisition method)</a>
 </li>
       </ul></li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.get_subtype_display">get_subtype_display() (requisitions.models.requisitions.HistoricalRequisition method)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.get_subtype_display">(requisitions.models.requisitions.Requisition method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/updates.html#updates.managers.BaseTemporaryCreatableManager.get_temporary_defaults">get_temporary_defaults() (updates.managers.BaseTemporaryCreatableManager method)</a>
 </li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.get_type_display">get_type_display() (requisitions.models.requisitions.HistoricalRequisition method)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.get_type_display">(requisitions.models.requisitions.Requisition method)</a>
+</li>
+      </ul></li>
       <li><a href="modules/updates.html#updates.models.HistoricalUpdate.get_update_type_display">get_update_type_display() (updates.models.HistoricalUpdate method)</a>
 
       <ul>
@@ -1319,6 +1311,12 @@
         <li><a href="modules/references.models.html#references.models.clinics.HistoricalClinic.is_ambulance">(references.models.clinics.HistoricalClinic attribute)</a>
 </li>
       </ul></li>
+      <li><a href="modules/users.html#users.models.HistoricalUser.is_app">is_app (users.models.HistoricalUser attribute)</a>
+
+      <ul>
+        <li><a href="modules/users.html#users.models.User.is_app">(users.models.User attribute)</a>
+</li>
+      </ul></li>
       <li><a href="modules/common.html#common.models.BaseSoftDeletableModel.is_deleted">is_deleted (common.models.BaseSoftDeletableModel attribute)</a>
 
       <ul>
@@ -1355,6 +1353,12 @@
 </li>
       <li><a href="modules/users.html#users.models.HistoricalUser.is_superuser">is_superuser (users.models.HistoricalUser attribute)</a>
 </li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.is_synced">is_synced (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.is_synced">(requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      </ul></li>
       <li><a href="modules/users.html#users.models.HistoricalUser.is_system">is_system (users.models.HistoricalUser attribute)</a>
 
       <ul>
@@ -1453,8 +1457,6 @@
         <li><a href="modules/requisitions.filters.html#requisitions.filters.requisitions.RequisitionFilter.Meta.model">(requisitions.filters.requisitions.RequisitionFilter.Meta attribute)</a>
 </li>
         <li><a href="modules/requisitions.serializers.html#requisitions.serializers.patients.PatientSerializer.Meta.model">(requisitions.serializers.patients.PatientSerializer.Meta attribute)</a>
-</li>
-        <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionNestedSerializer.Meta.model">(requisitions.serializers.requisitions.RequisitionNestedSerializer.Meta attribute)</a>
 </li>
         <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionSerializer.Meta.model">(requisitions.serializers.requisitions.RequisitionSerializer.Meta attribute)</a>
 </li>
@@ -1864,7 +1866,7 @@
 </li>
       <li><a href="modules/requisitions.serializers.html#requisitions.serializers.patients.PatientSerializer.Meta">PatientSerializer.Meta (class in requisitions.serializers.patients)</a>
 </li>
-      <li><a href="modules/requisitions.views.html#requisitions.views.requisitions.RequisitionListView.perform_create">perform_create() (requisitions.views.requisitions.RequisitionListView method)</a>
+      <li><a href="modules/requisitions.views.html#requisitions.views.requisitions.RequisitionDetailView.perform_update">perform_update() (requisitions.views.requisitions.RequisitionDetailView method)</a>
 </li>
       <li><a href="modules/references.models.html#references.models.persons.Person">Person (class in references.models.persons)</a>
 </li>
@@ -1974,8 +1976,6 @@
         <li><a href="modules/reports.html#reports.serializers.ReportVariableSerializer.Meta.read_only_fields">(reports.serializers.ReportVariableSerializer.Meta attribute)</a>
 </li>
         <li><a href="modules/requisitions.serializers.html#requisitions.serializers.patients.PatientSerializer.Meta.read_only_fields">(requisitions.serializers.patients.PatientSerializer.Meta attribute)</a>
-</li>
-        <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionNestedSerializer.Meta.read_only_fields">(requisitions.serializers.requisitions.RequisitionNestedSerializer.Meta attribute)</a>
 </li>
         <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionSerializer.Meta.read_only_fields">(requisitions.serializers.requisitions.RequisitionSerializer.Meta attribute)</a>
 </li>
@@ -2296,8 +2296,6 @@
 </li>
       <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionNestedSerializer">RequisitionNestedSerializer (class in requisitions.serializers.requisitions)</a>
 </li>
-      <li><a href="modules/requisitions.serializers.html#requisitions.serializers.requisitions.RequisitionNestedSerializer.Meta">RequisitionNestedSerializer.Meta (class in requisitions.serializers.requisitions)</a>
-</li>
       <li>
     requisitions
 
@@ -2306,11 +2304,7 @@
 </li>
       </ul></li>
       <li><a href="modules/references.models.html#references.models.persons.Person.requisitions">requisitions (references.models.persons.Person attribute)</a>
-
-      <ul>
-        <li><a href="modules/users.html#users.models.User.requisitions">(users.models.User attribute)</a>
 </li>
-      </ul></li>
       <li>
     requisitions.apps
 
@@ -2565,10 +2559,22 @@
 </li>
       <li><a href="modules/updates.html#updates.models.BaseUpdatableModel.set_update">set_update() (updates.models.BaseUpdatableModel method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/updates.common.html#updates.common.updaters.simple_model_updater">simple_model_updater() (in module updates.common.updaters)</a>
 </li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.solver">solver (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.solver">(requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.solver_id">solver_id (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.solver_id">(requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/updates.html#updates.models.Source">Source (class in updates.models)</a>
 </li>
       <li><a href="modules/updates.html#updates.models.HistoricalUpdate.source">source (updates.models.HistoricalUpdate attribute)</a>
@@ -2619,6 +2625,24 @@
 </li>
       <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.STATE_SOLVED">STATE_SOLVED (requisitions.models.requisitions.Requisition attribute)</a>
 </li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.subtype">subtype (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.subtype">(requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.SUBTYPE_IPHARM_ADVERSE_EFFECT">SUBTYPE_IPHARM_ADVERSE_EFFECT (requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.SUBTYPE_IPHARM_CONCILATION">SUBTYPE_IPHARM_CONCILATION (requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.SUTYPE_CHOICES">SUTYPE_CHOICES (requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.synced_at">synced_at (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.synced_at">(requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -2643,14 +2667,14 @@
         <li><a href="modules/updates.html#updates.managers.BaseTemporaryCreatableManager.TEMPORARY_DEFAULTS">(updates.managers.BaseTemporaryCreatableManager attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.text">text (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
 
       <ul>
         <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.text">(requisitions.models.requisitions.Requisition attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules/common.html#common.serializers.ResultField.to_internal_value">to_internal_value() (common.serializers.ResultField method)</a>
 </li>
       <li><a href="modules/reports.html#reports.generic_report.to_pdf">to_pdf() (in module reports.generic_report)</a>
@@ -2658,6 +2682,18 @@
       <li><a href="modules/common.html#common.serializers.ResultField.to_representation">to_representation() (common.serializers.ResultField method)</a>
 </li>
       <li><a href="modules/reports.html#reports.generic_report.to_text">to_text() (in module reports.generic_report)</a>
+</li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.HistoricalRequisition.type">type (requisitions.models.requisitions.HistoricalRequisition attribute)</a>
+
+      <ul>
+        <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.type">(requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.TYPE_CHOICES">TYPE_CHOICES (requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.TYPE_DELIVERY">TYPE_DELIVERY (requisitions.models.requisitions.Requisition attribute)</a>
+</li>
+      <li><a href="modules/requisitions.models.html#requisitions.models.requisitions.Requisition.TYPE_IPHARM">TYPE_IPHARM (requisitions.models.requisitions.Requisition attribute)</a>
 </li>
   </ul></td>
 </tr></table>

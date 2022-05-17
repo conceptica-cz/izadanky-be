@@ -37,7 +37,7 @@ $ docker-compose up -d iciselniky-app
 $ docker-compose exec iciselniky-app python manage.py createsuperuser
 ```
 
-Now you can login to the iCiselniky app's admin on localhost:8002/admin/
+Now you can login to the iCiselniky app's admin on http://localhost:8001/admin/
 
 ### Populate iCiselniky database with fake data (optional, development only)
 
@@ -49,18 +49,23 @@ $ docker-compose exec iciselniky-app python manage.py populate
 
 To use [iCiselniky](https://github.com/conceptica-cz/iciselniky-be) API you have to get a token.
 
-Add `ipharm` (you can choose any name) user to
-iCiselniky:  [create user](http://localhost:8002/admin/users/user/add/).
+Create user and token:
 
-Create token for the added user:  [create token](http://localhost:8002/admin/authtoken/tokenproxy/add/).
+```
+$ docker-compose exec iciselniky-app python manage.py create_app_users
+```
 
-You have to add the token to the `.envs/.development/.izadanky_app` file (`ICISELNIKY_TOKEN` variable).
+The command creates application users and tokens. The response shows the token for the `izadanky` user.
+
+Note: you can also find the token in the [iCiselniky admin](http://localhost:8001/admin/authtoken/tokenproxy/) .
+
+You have to add the `izadanky` token to the `.envs/.development/.izadanky_app` file (`ICISELNIKY_TOKEN` variable).
 
 ### Add iPharm environment variable files
 
 The app depends on the [iPharm app](https://github.com/conceptica-cz/ipharm-be).
 
-Create a environment variable files for iPharm app:
+Create a environment variable files for iP, they are set automaticallyharm app:
 
 - `./.envs/.development/.ipharm_app`
 - `./.envs/.development/.ipharm_postgres`
@@ -80,7 +85,7 @@ $ docker-compose up -d ipharm-app
 $ docker-compose exec ipharm-app python manage.py createsuperuser
 ```
 
-Now you can login to the iPharm app's admin on localhost:8001/admin/
+Now you can login to the iPharm app's admin on http://localhost:8000/admin/
 
 ### Populate iPharm database with fake data (optional, development only)
 
@@ -92,10 +97,15 @@ $ docker-compose exec ipharm-app python manage.py populate
 
 To use [iPharm](https://github.com/conceptica-cz/ipharm-be) API you have to get a token.
 
-Add `ipharm` (you can choose any name) user to
-iPharm:  [create user](http://localhost:8002/admin/users/user/add/).
+Create user and token:
 
-Create token for the added user:  [create token](http://localhost:8002/admin/authtoken/tokenproxy/add/).
+```
+$ docker-compose exec ipharm-app python manage.py create_app_users
+```
+
+The command creates application users and tokens. The response shows the token for the `izadanky` user.
+
+Note: you can also find the token in the [iZadanky admin](http://localhost:8000/admin/authtoken/tokenproxy/) .
 
 You have to add the token to the `.envs/.development/.izadanky_app` file (`IPHARM_TOKEN` variable).
 
@@ -109,7 +119,7 @@ Create a environment variable files for iZadanky app:
 
 In the files, set environment variables, mainly those that do not have default values.
 
-See the **Environment variables** section below for more information about variables.
+See the {ref}`Environment variables` section below for more information about variables.
 
 Note: you don't have to add `UNIS...` variables for development.
 
@@ -125,7 +135,7 @@ $ docker-compose up -d
 $ docker-compose exec izadanky-app python manage.py createsuperuser
 ```
 
-Now you can login to the app's admin on localhost:8000/admin/
+Now you can login to the app's admin on http://localhost:8002/admin/
 
 ### Populate database with fake data (optional, development only)
 

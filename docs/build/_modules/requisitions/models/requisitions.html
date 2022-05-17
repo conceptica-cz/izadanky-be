@@ -81,6 +81,22 @@
 
 
 <div class="viewcode-block" id="Requisition"><a class="viewcode-back" href="../../../modules/requisitions.models.html#requisitions.models.requisitions.Requisition">[docs]</a><span class="k">class</span> <span class="nc">Requisition</span><span class="p">(</span><span class="n">BaseUpdatableModel</span><span class="p">):</span>
+    <span class="n">TYPE_IPHARM</span> <span class="o">=</span> <span class="s2">&quot;ipharm&quot;</span>
+    <span class="n">TYPE_DELIVERY</span> <span class="o">=</span> <span class="s2">&quot;delivery&quot;</span>
+
+    <span class="n">TYPE_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">TYPE_IPHARM</span><span class="p">,</span> <span class="s2">&quot;ipharm&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">TYPE_DELIVERY</span><span class="p">,</span> <span class="s2">&quot;delivery&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">SUBTYPE_IPHARM_CONCILATION</span> <span class="o">=</span> <span class="s2">&quot;ipharm_conciliation&quot;</span>
+    <span class="n">SUBTYPE_IPHARM_ADVERSE_EFFECT</span> <span class="o">=</span> <span class="s2">&quot;ipahrm_adverse_effect&quot;</span>
+
+    <span class="n">SUTYPE_CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="n">SUBTYPE_IPHARM_CONCILATION</span><span class="p">,</span> <span class="s2">&quot;ipharm_conciliation&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">SUBTYPE_IPHARM_ADVERSE_EFFECT</span><span class="p">,</span> <span class="s2">&quot;ipharm_adverse_effect&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
     <span class="n">STATE_CREATED</span> <span class="o">=</span> <span class="s2">&quot;created&quot;</span>
     <span class="n">STATE_SENT</span> <span class="o">=</span> <span class="s2">&quot;sent&quot;</span>
     <span class="n">STATE_CANCELED</span> <span class="o">=</span> <span class="s2">&quot;canceled&quot;</span>
@@ -95,20 +111,35 @@
         <span class="p">(</span><span class="n">STATE_SOLVED</span><span class="p">,</span> <span class="s2">&quot;Solved&quot;</span><span class="p">),</span>
     <span class="p">)</span>
 
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">TYPE_CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">TYPE_IPHARM</span><span class="p">)</span>
+    <span class="n">subtype</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">SUTYPE_CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">SUBTYPE_IPHARM_CONCILATION</span>
+    <span class="p">)</span>
+
     <span class="n">state</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
         <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">STATE_CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">STATE_CREATED</span>
     <span class="p">)</span>
-    <span class="n">patient</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s2">&quot;requisitions.Patient&quot;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">patient</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="s2">&quot;requisitions.Patient&quot;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">file</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FileField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s2">&quot;requisitions&quot;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">applicant</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
-        <span class="s2">&quot;references.Person&quot;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;requisitions&quot;</span>
+        <span class="s2">&quot;references.Person&quot;</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;applicant_requisitions&quot;</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="n">created_by</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
-        <span class="s2">&quot;users.User&quot;</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;requisitions&quot;</span>
+    <span class="n">solver</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span>
+        <span class="s2">&quot;references.Person&quot;</span><span class="p">,</span>
+        <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span>
+        <span class="n">related_name</span><span class="o">=</span><span class="s2">&quot;solver_requisitions&quot;</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">is_synced</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">synced_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">objects</span> <span class="o">=</span> <span class="n">RequisitionManager</span><span class="p">()</span></div>
 </pre></div>

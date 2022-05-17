@@ -8,12 +8,16 @@ from ..models.requisitions import Requisition
 class RequisitionAdmin(BaseHistoryAdmin):
     list_display = [
         "id",
+        "type",
+        "subtype",
         "state",
         "patient",
         "applicant",
-        "created_by",
+        "solver",
         "created_at",
         "updated_at",
+        "is_synced",
+        "synced_at",
     ]
-    list_filter = ["state", "created_by"]
+    list_filter = ["type", "subtype", "state", "applicant"]
     search_fields = ["id"]

@@ -209,12 +209,12 @@ IPHARM_TIMEOUT = int(os.environ.get("IPHARM_TIMEOUT", 30))
 # REFERENCES AND UPDATES
 
 BASE_ICISELNIKY_URL = os.environ.get(
-    "BASE_ICISELNIKY_URL", "http://iciselniky-app:8000/api/v1"
+    "BASE_ICISELNIKY_URL", "http://iciselniky-app:8001/api/v1"
 )
 ICISELNIKY_TOKEN = os.environ.get("ICISELNIKY_TOKEN", "")
 
 
-BASE_UNIS_URL = os.environ.get("BASE_UNIS_URL", "http://unis-app:8000/api/v1")
+BASE_UNIS_URL = os.environ.get("BASE_UNIS_URL", "")
 UNIS_TOKEN = os.environ.get("UNIS_TOKEN", "")
 
 DEFAULT_DATA_LOADER = "updates.common.loaders.references_loader"

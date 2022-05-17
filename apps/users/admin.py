@@ -10,10 +10,11 @@ class CustomUserAdmin(UserAdmin):
     add_form = UserCreationForm
     form = UserChangeForm
     model = User
-    list_display = ("id", "username", "is_staff", "is_active", "is_system")
+    list_display = ("id", "username", "is_staff", "is_active", "is_system", "is_app")
     list_filter = (
         "is_staff",
         "is_system",
+        "is_app",
         "is_active",
     )
     fieldsets = (
@@ -26,6 +27,7 @@ class CustomUserAdmin(UserAdmin):
                     "is_staff",
                     "is_active",
                     "is_system",
+                    "is_app",
                     "groups",
                     "user_permissions",
                 )
@@ -44,6 +46,7 @@ class CustomUserAdmin(UserAdmin):
                     "is_staff",
                     "is_active",
                     "is_system",
+                    "is_app",
                 ),
             },
         ),
