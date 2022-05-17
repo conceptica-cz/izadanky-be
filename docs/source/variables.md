@@ -17,11 +17,23 @@ Django `ALLOWED_HOSTS` - list of hosts separated by comma (or just `*`).
 
 ### BASE_ICISELNIKY_URL
 
-Default: `http://iciselniky-app:8000/api/v1`
+Default: `http://iciselniky-app:8001/api/v1`
 
 Base iCiselniky API url.
 
 ### ICISELNIKY_TOKEN
+
+Default: emtpy value.
+
+iCiselniky API token.
+
+### BASE_IPHARM_URL
+
+Default: `http://iciselniky-app:8000/api/v1`
+
+Base iCiselniky API url.
+
+### IPHARM_TOKEN
 
 Default: emtpy value.
 

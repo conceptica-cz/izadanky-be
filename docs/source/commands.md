@@ -4,8 +4,12 @@ Use `docker-compose` to run Django commands.
 For example, to run the `create_sources` command:
 
 ```
-$ docker-compose exec ipharm-app python manage.py create_sources
+$ docker-compose exec izadanky-app python manage.py create_sources
 ```
+
+## create_app_users
+
+Create the consumer app's (iPharm, iDoprava) users and tokens.
 
 ## create_sources
 

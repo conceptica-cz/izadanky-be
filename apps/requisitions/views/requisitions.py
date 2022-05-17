@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics
 
@@ -13,8 +14,8 @@ from .common import HistoryView
 class RequisitionListView(generics.ListCreateAPIView):
     queryset = (
         Requisition.objects.select_related("patient")
-        .select_related("created_by")
         .select_related("applicant")
+        .select_related("solver")
         .all()
     )
 
@@ -26,9 +27,6 @@ class RequisitionListView(generics.ListCreateAPIView):
             return RequisitionNestedSerializer
         return RequisitionSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
-
 
 class RequisitionDetailView(generics.RetrieveUpdateAPIView):
     queryset = Requisition.objects.all()
@@ -37,6 +35,12 @@ class RequisitionDetailView(generics.RetrieveUpdateAPIView):
         if self.request.method == "GET":
             return RequisitionNestedSerializer
         return RequisitionSerializer
+
+    def perform_update(self, serializer):
+        if self.request.user.is_app:
+            serializer.save(is_synced=True, synced_at=timezone.now())
+        else:
+            serializer.save(is_synced=False)
 
 
 class RequisitionHistoryView(HistoryView):

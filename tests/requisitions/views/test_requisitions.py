@@ -34,6 +34,7 @@ class CreateRequisitionTest(APITestCase):
         patient = PatientFactory()
         applicant = PersonFactory()
         requisition_data = {
+            "type:": Requisition.TYPE_IPHARM,
             "patient": patient.id,
             "text": "Test",
             "applicant": applicant.id,
@@ -50,13 +51,14 @@ class CreateRequisitionTest(APITestCase):
         self.assertEqual(requisition.patient, patient)
         self.assertEqual(requisition.applicant, applicant)
         self.assertEqual(requisition.text, "Test")
-        self.assertEqual(requisition.created_by, self.user)
+        self.assertEqual(requisition.is_synced, False)
+        self.assertEqual(requisition.synced_at, None)
 
 
 class GetSingleRequisitionTest(APITestCase):
     def setUp(self) -> None:
-        self.user = UserFactory()
-        self.requisition = RequisitionFactory()
+        self.user = UserFactory(is_app=False)
+        self.requisition = RequisitionFactory(is_synced=True)
 
     def test_get_single_requisition(self):
         self.client.force_login(user=self.user)
@@ -82,4 +84,53 @@ class GetSingleRequisitionTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
 
-# TODO: Test for update and delete
+class UpdateRequisitionTest(APITestCase):
+    def setUp(self) -> None:
+        self.user = UserFactory(is_app=False)
+        self.app_user = UserFactory(is_app=True)
+        self.requisition = RequisitionFactory(is_synced=True, text="old text")
+
+    def test_update_requisition(self):
+        self.client.force_login(user=self.user)
+        response = self.client.patch(
+            reverse(
+                "requisitions:requisition_detail", kwargs={"pk": self.requisition.pk}
+            ),
+            data={"text": "new text"},
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        requisition = Requisition.objects.get(id=self.requisition.id)
+        self.assertEqual(requisition.text, "new text")
+
+    def test_update_requisition_is_synced_is_false_for_casual_user(self):
+        self.client.force_login(user=self.user)
+        response = self.client.patch(
+            reverse(
+                "requisitions:requisition_detail", kwargs={"pk": self.requisition.pk}
+            ),
+            data={"text": "new text"},
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        requisition = Requisition.objects.get(id=self.requisition.id)
+        self.assertEqual(requisition.is_synced, False)
+
+    def test_update_requisition_is_synced_is_true_for_app_user(self):
+        self.requisition.is_synced = False
+        self.requisition.save()
+
+        self.client.force_login(user=self.app_user)
+        response = self.client.patch(
+            reverse(
+                "requisitions:requisition_detail", kwargs={"pk": self.requisition.pk}
+            ),
+            data={"text": "new text"},
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        requisition = Requisition.objects.get(id=self.requisition.id)
+        self.assertEqual(requisition.is_synced, True)

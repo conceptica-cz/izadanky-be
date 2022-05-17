@@ -132,7 +132,7 @@ $ cd izadanky-be
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec iciselniky-app python manage.py createsuperuser
 </pre></div>
 </div>
-<p>Now you can login to the iCiselniky app’s admin on localhost:8001/admin/</p>
+<p>Now you can login to the iCiselniky app’s admin on http://localhost:8001/admin/</p>
 </section>
 <section id="populate-iciselniky-database-with-fake-data-optional-development-only">
 <h3>Populate iCiselniky database with fake data (optional, development only)<a class="headerlink" href="#populate-iciselniky-database-with-fake-data-optional-development-only" title="Permalink to this headline"></a></h3>
@@ -143,10 +143,13 @@ $ cd izadanky-be
 <section id="add-izadanky-user-and-token-to-iciselniky">
 <h3>Add <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user and token to iCiselniky<a class="headerlink" href="#add-izadanky-user-and-token-to-iciselniky" title="Permalink to this headline"></a></h3>
 <p>To use <a class="reference external" href="https://github.com/conceptica-cz/iciselniky-be">iCiselniky</a> API you have to get a token.</p>
-<p>Create <code class="docutils literal notranslate"><span class="pre">ipharm</span></code> (you can choose any name) user to
-iCiselniky:  <a class="reference external" href="http://localhost:8002/admin/users/user/add/">create user</a>.</p>
-<p>Create token for the added user:  <a class="reference external" href="http://localhost:8002/admin/authtoken/tokenproxy/add/">create token</a>.</p>
-<p>You have to add the token to the <code class="docutils literal notranslate"><span class="pre">.envs/.development/.izadanky_app</span></code> file (<code class="docutils literal notranslate"><span class="pre">ICISELNIKY_TOKEN</span></code> variable).</p>
+<p>Create user and token:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec iciselniky-app python manage.py create_app_users
+</pre></div>
+</div>
+<p>The command creates application users and tokens. The response shows the token for the <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user.</p>
+<p>Note: you can also find the token in the <a class="reference external" href="http://localhost:8001/admin/authtoken/tokenproxy/">iCiselniky admin</a> .</p>
+<p>You have to add the <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> token to the <code class="docutils literal notranslate"><span class="pre">.envs/.development/.izadanky_app</span></code> file (<code class="docutils literal notranslate"><span class="pre">ICISELNIKY_TOKEN</span></code> variable).</p>
 </section>
 <section id="add-ipharm-environment-variable-files">
 <h3>Add iPharm environment variable files<a class="headerlink" href="#add-ipharm-environment-variable-files" title="Permalink to this headline"></a></h3>
@@ -170,7 +173,7 @@ iCiselniky:  <a class="reference external" href="http://localhost:8002/admin/use
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec ipharm-app python manage.py createsuperuser
 </pre></div>
 </div>
-<p>Now you can login to the iPharm app’s admin on localhost:8001/admin/</p>
+<p>Now you can login to the iPharm app’s admin on http://localhost:8000/admin/</p>
 </section>
 <section id="populate-ipharm-database-with-fake-data-optional-development-only">
 <h3>Populate iPharm database with fake data (optional, development only)<a class="headerlink" href="#populate-ipharm-database-with-fake-data-optional-development-only" title="Permalink to this headline"></a></h3>
@@ -181,9 +184,12 @@ iCiselniky:  <a class="reference external" href="http://localhost:8002/admin/use
 <section id="add-izadanky-user-and-token-to-ipharm">
 <h3>Add <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user and token to iPharm<a class="headerlink" href="#add-izadanky-user-and-token-to-ipharm" title="Permalink to this headline"></a></h3>
 <p>To use <a class="reference external" href="https://github.com/conceptica-cz/ipharm-be">iPharm</a> API you have to get a token.</p>
-<p>Create <code class="docutils literal notranslate"><span class="pre">ipharm</span></code> (you can choose any name) user to
-iPharm:  <a class="reference external" href="http://localhost:8002/admin/users/user/add/">create user</a>.</p>
-<p>Create token for the added user:  <a class="reference external" href="http://localhost:8002/admin/authtoken/tokenproxy/add/">create token</a>.</p>
+<p>Create user and token:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec ipharm-app python manage.py create_app_users
+</pre></div>
+</div>
+<p>The command creates application users and tokens. The response shows the token for the <code class="docutils literal notranslate"><span class="pre">izadanky</span></code> user.</p>
+<p>Note: you can also find the token in the <a class="reference external" href="http://localhost:8000/admin/authtoken/tokenproxy/">iZadanky admin</a> .</p>
 <p>You have to add the token to the <code class="docutils literal notranslate"><span class="pre">.envs/.development/.izadanky_app</span></code> file (<code class="docutils literal notranslate"><span class="pre">IPHARM_TOKEN</span></code> variable).</p>
 </section>
 <section id="add-environment-variable-files">
@@ -209,7 +215,7 @@ iPharm:  <a class="reference external" href="http://localhost:8002/admin/users/u
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose exec izadanky-app python manage.py createsuperuser
 </pre></div>
 </div>
-<p>Now you can login to the app’s admin on localhost:8000/admin/</p>
+<p>Now you can login to the app’s admin on http://localhost:8002/admin/</p>
 </section>
 <section id="populate-database-with-fake-data-optional-development-only">
 <h3>Populate database with fake data (optional, development only)<a class="headerlink" href="#populate-database-with-fake-data-optional-development-only" title="Permalink to this headline"></a></h3>

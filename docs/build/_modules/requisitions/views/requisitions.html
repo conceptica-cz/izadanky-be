@@ -71,7 +71,8 @@
            <div itemprop="articleBody">
              
   <h1>Source code for requisitions.views.requisitions</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">django_filters.rest_framework</span> <span class="kn">import</span> <span class="n">DjangoFilterBackend</span>
+<span></span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">django_filters.rest_framework</span> <span class="kn">import</span> <span class="n">DjangoFilterBackend</span>
 <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">filters</span><span class="p">,</span> <span class="n">generics</span>
 
 <span class="kn">from</span> <span class="nn">..filters</span> <span class="kn">import</span> <span class="n">RequisitionFilter</span>
@@ -86,8 +87,8 @@
 <div class="viewcode-block" id="RequisitionListView"><a class="viewcode-back" href="../../../modules/requisitions.views.html#requisitions.views.requisitions.RequisitionListView">[docs]</a><span class="k">class</span> <span class="nc">RequisitionListView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
     <span class="n">queryset</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">Requisition</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s2">&quot;patient&quot;</span><span class="p">)</span>
-        <span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s2">&quot;created_by&quot;</span><span class="p">)</span>
         <span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s2">&quot;applicant&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">select_related</span><span class="p">(</span><span class="s2">&quot;solver&quot;</span><span class="p">)</span>
         <span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="p">)</span>
 
@@ -97,10 +98,7 @@
 <div class="viewcode-block" id="RequisitionListView.get_serializer_class"><a class="viewcode-back" href="../../../modules/requisitions.views.html#requisitions.views.requisitions.RequisitionListView.get_serializer_class">[docs]</a>    <span class="k">def</span> <span class="nf">get_serializer_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;GET&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">RequisitionNestedSerializer</span>
-        <span class="k">return</span> <span class="n">RequisitionSerializer</span></div>
-
-<div class="viewcode-block" id="RequisitionListView.perform_create"><a class="viewcode-back" href="../../../modules/requisitions.views.html#requisitions.views.requisitions.RequisitionListView.perform_create">[docs]</a>    <span class="k">def</span> <span class="nf">perform_create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
-        <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">created_by</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">RequisitionSerializer</span></div></div>
 
 
 <div class="viewcode-block" id="RequisitionDetailView"><a class="viewcode-back" href="../../../modules/requisitions.views.html#requisitions.views.requisitions.RequisitionDetailView">[docs]</a><span class="k">class</span> <span class="nc">RequisitionDetailView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveUpdateAPIView</span><span class="p">):</span>
@@ -109,7 +107,13 @@
 <div class="viewcode-block" id="RequisitionDetailView.get_serializer_class"><a class="viewcode-back" href="../../../modules/requisitions.views.html#requisitions.views.requisitions.RequisitionDetailView.get_serializer_class">[docs]</a>    <span class="k">def</span> <span class="nf">get_serializer_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;GET&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">RequisitionNestedSerializer</span>
-        <span class="k">return</span> <span class="n">RequisitionSerializer</span></div></div>
+        <span class="k">return</span> <span class="n">RequisitionSerializer</span></div>
+
+<div class="viewcode-block" id="RequisitionDetailView.perform_update"><a class="viewcode-back" href="../../../modules/requisitions.views.html#requisitions.views.requisitions.RequisitionDetailView.perform_update">[docs]</a>    <span class="k">def</span> <span class="nf">perform_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serializer</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_app</span><span class="p">:</span>
+            <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">is_synced</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">synced_at</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">is_synced</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="RequisitionHistoryView"><a class="viewcode-back" href="../../../modules/requisitions.views.html#requisitions.views.requisitions.RequisitionHistoryView">[docs]</a><span class="k">class</span> <span class="nc">RequisitionHistoryView</span><span class="p">(</span><span class="n">HistoryView</span><span class="p">):</span>
