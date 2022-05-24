@@ -1,3 +1,4 @@
+from common.views import HistoryView
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import (
     OpenApiParameter,
@@ -8,7 +9,6 @@ from drf_spectacular.utils import (
 from requisitions.models import Patient
 from requisitions.serializers.patients import PatientSerializer
 from requisitions.tasks import load_patient_task
-from requisitions.views.common import HistoryView
 from rest_framework import serializers, status
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.response import Response

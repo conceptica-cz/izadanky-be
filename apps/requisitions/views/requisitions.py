@@ -1,3 +1,4 @@
+from common.views import HistoryView
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics
@@ -8,7 +9,6 @@ from ..serializers.requisitions import (
     RequisitionNestedSerializer,
     RequisitionSerializer,
 )
-from .common import HistoryView
 
 
 class RequisitionListView(generics.ListCreateAPIView):

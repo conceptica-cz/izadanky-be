@@ -9,4 +9,10 @@ class RequisitionFilter(django_filters.FilterSet):
             "id": [
                 "exact",
             ],
+            "type": [
+                "exact",
+            ],
+            "is_synced": [
+                "exact",
+            ],
         }

@@ -19,20 +19,20 @@ class Requisition(BaseUpdatableModel):
     SUBTYPE_IPHARM_CONCILATION = "ipharm_conciliation"
     SUBTYPE_IPHARM_ADVERSE_EFFECT = "ipahrm_adverse_effect"
 
-    SUTYPE_CHOICES = (
+    SUBTYPE_CHOICES = (
         (SUBTYPE_IPHARM_CONCILATION, "ipharm_conciliation"),
         (SUBTYPE_IPHARM_ADVERSE_EFFECT, "ipharm_adverse_effect"),
     )
 
     STATE_CREATED = "created"
-    STATE_SENT = "sent"
+    STATE_PENDING = "pending"
     STATE_CANCELED = "canceled"
     STATE_REFUSED = "refused"
     STATE_SOLVED = "solved"
 
     STATE_CHOICES = (
         (STATE_CREATED, "Created"),
-        (STATE_SENT, "Sent"),
+        (STATE_PENDING, "Pending"),
         (STATE_CANCELED, "Canceled"),
         (STATE_REFUSED, "Refused"),
         (STATE_SOLVED, "Solved"),
@@ -40,7 +40,7 @@ class Requisition(BaseUpdatableModel):
 
     type = models.CharField(max_length=50, choices=TYPE_CHOICES, default=TYPE_IPHARM)
     subtype = models.CharField(
-        max_length=50, choices=SUTYPE_CHOICES, default=SUBTYPE_IPHARM_CONCILATION
+        max_length=50, choices=SUBTYPE_CHOICES, default=SUBTYPE_IPHARM_CONCILATION
     )
 
     state = models.CharField(
