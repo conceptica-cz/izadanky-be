@@ -34,6 +34,7 @@ class UpdateAdmin(admin.ModelAdmin):
         "finished_at",
         "url_parameters",
     ]
+    search_fields = ["id"]
     list_filter = ["source"]
     inlines = [ModelUpdateInline]
 
@@ -45,5 +46,8 @@ class ModelUpdateAdmin(admin.ModelAdmin):
         "created",
         "updated",
         "not_changed",
+        "created_at",
     ]
+    search_fields = ["update"]
+    autocomplete_fields = ["update"]
     list_filter = ["name"]

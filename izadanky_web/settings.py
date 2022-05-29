@@ -227,6 +227,13 @@ DEFAULT_FULL_UPDATE_INTERVAL = os.environ.get(
 )
 DEFAULT_RETRY_DELAY = os.environ.get("DEFAULT_RETRY_DELAY", 3600)
 
+# if the time between the last patient care and the new care is less than this value
+# (in hours), all care's related models will be migrated to the new care
+MIGRATE_RELATED_TIME_GAP = os.environ.get("MIGRATE_RELATED_TIME_GAP", 36)
+
+# all "empty" Updates and ModeUpdates older than this value will be deleted
+EMPTY_UPDATES_DELETING_TIME_GAP = os.environ.get("UPDATE_AGING_TIME_GAP", 48)
+
 
 UPDATE_SOURCES = {
     "Clinic": {
@@ -236,6 +243,8 @@ UPDATE_SOURCES = {
             "identifiers": ["reference_id"],
         },
         "transformers": ["updates.common.transformers.id_to_reference_id"],
+        "interval_incremental": 30,
+        "interval_full": 120,
     },
     "Department": {
         "data_loader_kwargs": {"url": BASE_ICISELNIKY_URL + "/departments/"},
@@ -251,6 +260,8 @@ UPDATE_SOURCES = {
             },
         },
         "transformers": ["updates.common.transformers.delete_id"],
+        "interval_incremental": 30,
+        "interval_full": 120,
     },
     "Person": {
         "data_loader_kwargs": {"url": BASE_ICISELNIKY_URL + "/persons/"},
@@ -259,6 +270,8 @@ UPDATE_SOURCES = {
             "identifiers": ["person_number"],
         },
         "transformers": ["updates.common.transformers.delete_id"],
+        "interval_incremental": 30,
+        "interval_full": 120,
     },
 }
 
