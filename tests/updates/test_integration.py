@@ -1,6 +1,6 @@
 from unittest.mock import Mock, patch
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from references.models import Clinic, Department
 from updates.tasks import update
 
@@ -8,6 +8,7 @@ from factories.references import ClinicFactory, DepartmentFactory
 
 
 @patch("updates.common.loaders.requests.get")
+@override_settings(CELERY_TASK_ALWAYS_EAGER=True)
 class TestClinicUpdate(TestCase):
     def test_clinic(self, mocked_get):
         ClinicFactory(reference_id=20, external_id=10)
@@ -55,6 +56,7 @@ class TestClinicUpdate(TestCase):
 
 
 @patch("updates.common.loaders.requests.get")
+@override_settings(CELERY_TASK_ALWAYS_EAGER=True)
 class TestDepartmentUpdate(TestCase):
     def test_department(self, mocked_get):
         clinic = ClinicFactory(reference_id=41, external_id=51)

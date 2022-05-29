@@ -34,6 +34,8 @@ class ModelChangeSerializerTest(TestCase):
         self.assertEqual(
             serializer.data,
             {
+                "entity_id": clinic.id,
+                "entity_name": "Clinic",
                 "date": "2020-01-01T03:00:00+01:00",
                 "user": {
                     "id": user_2.id,
