@@ -21,3 +21,4 @@ class RequisitionAdmin(BaseHistoryAdmin):
     ]
     list_filter = ["type", "subtype", "state", "applicant"]
     search_fields = ["id"]
+    autocomplete_fields = ["patient", "applicant", "solver", "diagnosis"]
