@@ -246,6 +246,16 @@ UPDATE_SOURCES = {
         "interval_incremental": 30,
         "interval_full": 120,
     },
+    "Diagnosis": {
+        "data_loader_kwargs": {"url": BASE_ICISELNIKY_URL + "/diagnoses/"},
+        "model_updater_kwargs": {
+            "model": "references.Diagnosis",
+            "identifiers": ["code"],
+        },
+        "interval_incremental": 60,
+        "interval_full": 240,
+        "transformers": ["updates.common.transformers.delete_id"],
+    },
     "Department": {
         "data_loader_kwargs": {"url": BASE_ICISELNIKY_URL + "/departments/"},
         "model_updater_kwargs": {
