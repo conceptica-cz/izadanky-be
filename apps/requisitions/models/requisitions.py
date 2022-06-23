@@ -47,8 +47,27 @@ class Requisition(BaseUpdatableModel):
         max_length=255, choices=STATE_CHOICES, default=STATE_CREATED
     )
     patient = models.ForeignKey(
-        "requisitions.Patient", on_delete=models.CASCADE, null=True, blank=True
+        "requisitions.Patient",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="requisitions",
     )
+    clinic = models.ForeignKey(
+        "references.Clinic",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="requisitions",
+    )
+    diagnosis = models.ForeignKey(
+        "references.Diagnosis",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="requisitions",
+    )
+
     text = models.TextField(blank=True, null=True)
     file = models.FileField(upload_to="requisitions", blank=True, null=True)
     applicant = models.ForeignKey(

@@ -4,6 +4,8 @@ from requisitions.serializers.requisitions import RequisitionNestedSerializer
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from factories.references import ClinicFactory
+from factories.references.diagnoses import DiagnosisFactory
 from factories.references.persons import PersonFactory
 from factories.requisitions import RequisitionFactory
 from factories.requisitions.patients import PatientFactory
@@ -13,8 +15,8 @@ from factories.users.models import UserFactory
 class GetAllRequisitionsTest(APITestCase):
     def setUp(self) -> None:
         self.user = UserFactory()
-        self.requisition_1 = RequisitionFactory()
-        self.requisition_2 = RequisitionFactory()
+        self.requisition_1 = RequisitionFactory(type=Requisition.TYPE_IPHARM)
+        self.requisition_2 = RequisitionFactory(type=Requisition.TYPE_DELIVERY)
 
     def test_get_all_requisitions(self):
         self.client.force_login(user=self.user)
@@ -25,6 +27,12 @@ class GetAllRequisitionsTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["results"], serializer.data)
 
+        self.assertEqual(response.data["results"][0]["type"], Requisition.TYPE_IPHARM)
+        self.assertEqual(response.data["results"][1]["type"], Requisition.TYPE_DELIVERY)
+
+        self.assertIn("patient", response.data["results"][0])
+        self.assertNotIn("patient", response.data["results"][1])
+
 
 class CreateRequisitionTest(APITestCase):
     def setUp(self) -> None:
@@ -33,11 +41,16 @@ class CreateRequisitionTest(APITestCase):
     def test_new_requisition(self):
         patient = PatientFactory()
         applicant = PersonFactory()
+        clinic = ClinicFactory()
+        diagnosis = DiagnosisFactory()
+
         requisition_data = {
-            "type:": Requisition.TYPE_IPHARM,
+            "type": Requisition.TYPE_IPHARM,
             "patient": patient.id,
             "text": "Test",
             "applicant": applicant.id,
+            "clinic": clinic.id,
+            "diagnosis": diagnosis.id,
         }
         self.client.force_login(user=self.user)
         response = self.client.post(
